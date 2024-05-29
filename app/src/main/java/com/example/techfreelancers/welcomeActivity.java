@@ -10,26 +10,28 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class welcomeAcitivity extends AppCompatActivity {
+public class welcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_welcome_acitivity);
+        setContentView(R.layout.activity_welcome_acitivity); // Ensure the layout file name is correct
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Button signupBtn=findViewById(R.id.signupBtn);
-        signupBtn.setOnClickListener(View->{
-            Intent intent= new Intent(welcomeAcitivity.this, signupActivity.class);
+
+        Button signupBtn = findViewById(R.id.signupBtn);
+        signupBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(welcomeActivity.this, signupActivity.class);
             startActivity(intent);
         });
-        Button loginBtn=findViewById(R.id.loginBtn);
-        signupBtn.setOnClickListener(View->{
-            Intent intent= new Intent(welcomeAcitivity.this, loginActivity.class);
+
+        Button loginBtn = findViewById(R.id.loginBtn);
+        loginBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(welcomeActivity.this, loginActivity.class);
             startActivity(intent);
         });
     }

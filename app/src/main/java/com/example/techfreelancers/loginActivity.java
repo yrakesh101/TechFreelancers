@@ -32,13 +32,10 @@ public class loginActivity extends AppCompatActivity {
         });
 
         Button loginButton = findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(view -> {
-            doUserLogin();
-        });
+        loginButton.setOnClickListener(view -> doUserLogin());
 
         Button signupButton = findViewById(R.id.signupButton);
         signupButton.setOnClickListener(view -> {
-            // Start signUpPage activity
             Intent intent = new Intent(loginActivity.this, signupActivity.class);
             startActivity(intent);
         });
@@ -50,16 +47,12 @@ public class loginActivity extends AppCompatActivity {
         RequestUtil.makePostRequest(url, loginForm, ResponseModel.class, new RequestUtil.NetworkCallback<ResponseModel>() {
             @Override
             public void onSuccess(ResponseModel result) {
-                runOnUiThread(() -> {
-                    Toast.makeText(getApplicationContext(), "User login success.", Toast.LENGTH_SHORT).show();
-                });
+                runOnUiThread(() -> Toast.makeText(getApplicationContext(), "User login success.", Toast.LENGTH_SHORT).show());
             }
 
             @Override
             public void onFailure(Exception e) {
-                runOnUiThread(() -> {
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                });
+                runOnUiThread(() -> Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show());
             }
         });
     }
