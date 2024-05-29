@@ -16,7 +16,7 @@ import com.example.techfreelancers.api.RequestUtil;
 import com.example.techfreelancers.api.ResponseModel;
 import com.example.techfreelancers.api.form.LoginForm;
 
-public class login extends AppCompatActivity {
+public class loginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class login extends AppCompatActivity {
         Button signupButton = findViewById(R.id.signupButton);
         signupButton.setOnClickListener(view -> {
             // Start signUpPage activity
-            Intent intent = new Intent(login.this, signUpPage.class);
+            Intent intent = new Intent(loginActivity.this, signupActivity.class);
             startActivity(intent);
         });
     }
