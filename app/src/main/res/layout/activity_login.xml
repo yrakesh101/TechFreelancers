@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B99AD9"
+    android:background="#6f4c42"
     tools:context=".loginActivity">
 
     <ScrollView
@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="201dp"
                 android:layout_marginTop="48dp"
-                app:srcCompat="@drawable/sample" />
+                app:srcCompat="@drawable/logo" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -160,7 +160,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
@@ -174,7 +174,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:text="Sign Up" />
+                    android:text="Sign Up"
+                    android:textColor="@color/grey"
+                    />
             </LinearLayout>
 
 
