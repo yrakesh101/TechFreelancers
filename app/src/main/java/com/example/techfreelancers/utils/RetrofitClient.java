@@ -18,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
     private static final String DEFAULT_BASE_API_URL = "http://10.10.10.181:8090";
     private static final Integer DEFAULT_REQUEST_TIMEOUT = 10000;
+    private static final String USER_SESSION_KEY = "LOGIN_USER_INFO";
     private static Retrofit retrofit;
 
     public static Retrofit getInstance(Context context) {
@@ -42,11 +43,11 @@ public class RetrofitClient {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
                     Request original = chain.request();
-                    SharedPreferences sharedPreferences = context.getSharedPreferences("login_user_info", Context.MODE_PRIVATE);
-                    String sessionToken = sharedPreferences.getString("session_token", null);
-                    if (sessionToken != null) {
+                    SharedPreferences sharedPreferences = context.getSharedPreferences(USER_SESSION_KEY, Context.MODE_PRIVATE);
+                    String userToken = sharedPreferences.getString("USER_TOKEN", null);
+                    if (userToken != null) {
                         Request.Builder requestBuilder = original.newBuilder()
-                                .header("Authorization", "Bearer " + sessionToken);
+                                .header("Authorization", "Bearer " + userToken);
                         Request request = requestBuilder.build();
                         return chain.proceed(request);
                     } else {
