@@ -7,6 +7,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface UserLoginApi {
-    @POST("/user/login")
+    @POST("/mobile/user/login")
     Call<ResponseModel> userLogin(@Body LoginForm loginRequest);
 }

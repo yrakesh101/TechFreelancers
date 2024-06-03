@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -20,14 +21,18 @@ import com.example.techfreelancers.api.form.LoginForm;
 import com.example.techfreelancers.utils.SessionManager;
 import com.google.gson.internal.LinkedTreeMap;
 
+import java.io.IOException;
+import java.lang.annotation.Annotation;
 import java.util.Map;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Converter;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class welcomeActivity extends AppCompatActivity {
-
     SharedPreferences sharedPreferences;
 
     @Override
@@ -58,11 +63,10 @@ public class welcomeActivity extends AppCompatActivity {
         });
     }
 
-
     private void doUserLogin() {
-        LoginForm loginForm = new LoginForm("helloworld", "passwordpassword");
-
-        Call<ResponseModel> call = RetrofitClient.getInstance(this).create(UserLoginApi.class).userLogin(loginForm);
+        LoginForm loginForm = new LoginForm("hello@gmail.com", "hellohello");
+        Retrofit retrofit = RetrofitClient.getInstance(this);
+        Call<ResponseModel> call = retrofit.create(UserLoginApi.class).userLogin(loginForm);
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
@@ -72,12 +76,19 @@ public class welcomeActivity extends AppCompatActivity {
                         Map responseData = (LinkedTreeMap) responseModel.getData();
                         // save user information
                         SessionManager.saveUserSession(getApplicationContext(), responseData);
-                        Toast.makeText(getApplicationContext(), "Login successful: " + responseData.get("userName"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Login successful: " + responseData.get("email"), Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Login failed: " + response.message(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), responseModel.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Request failed: " + response.message(), Toast.LENGTH_SHORT).show();
+                    Converter<ResponseBody, ResponseModel> converter = retrofit.responseBodyConverter(ResponseModel.class, new Annotation[0]);
+                    ResponseModel errorModel = null;
+                    try {
+                        errorModel = converter.convert(response.errorBody());
+                        Toast.makeText(getApplicationContext(), errorModel.getMessage(), Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 

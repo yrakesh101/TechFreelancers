@@ -17,7 +17,7 @@ public class SessionManager {
         // Set values to the SharedPreferences
         editor.putBoolean("IS_LOGIN", true);
         editor.putInt("USER_ID", ((Double) userInfo.get("userId")).intValue());
-        editor.putString("USER_NAME", userInfo.get("userName").toString());
+        editor.putString("USER_EMAIL", userInfo.get("email").toString());
         editor.putString("USER_TOKEN", userInfo.get("userToken").toString());
         // Apply the changes
         editor.apply();
