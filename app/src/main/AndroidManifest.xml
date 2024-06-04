@@ -15,6 +15,12 @@
         android:theme="@style/Theme.TechFreelancers"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".editProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profileActivity"
+            android:exported="false" />
+        <activity
             android:name=".searchResultActivity"
             android:exported="false" />
         <activity

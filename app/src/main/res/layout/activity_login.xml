@@ -59,7 +59,7 @@
                 android:textSize="16sp"
                 android:hint="Email address"
                 android:textAlignment="center"
-                android:textColorHint="@color/grey"
+                android:textColorHint="@color/darkslategray"
                 android:inputType="textEmailAddress" />
 
             <EditText
