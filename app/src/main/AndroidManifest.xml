@@ -27,9 +27,6 @@
             android:name=".searchActivity"
             android:exported="false" />
         <activity
-            android:name=".homepageActivity"
-            android:exported="false" />
-        <activity
             android:name=".loginActivity"
             android:exported="true">
             <intent-filter>

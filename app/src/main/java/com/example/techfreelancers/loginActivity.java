@@ -1,5 +1,5 @@
 package com.example.techfreelancers;
-
+import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -53,10 +54,10 @@ public class loginActivity extends AppCompatActivity {
         loginBinding.emailEditText.setText("hello@gmail.com");
         loginBinding.passwordEditText.setText("hellohello");
 
-        Button loginButton = findViewById(R.id.loginButton);
+        AppCompatButton loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(view -> doUserLogin());
 
-        Button signupButton = findViewById(R.id.signupButton);
+        AppCompatButton signupButton = findViewById(R.id.signupButton);
         signupButton.setOnClickListener(view -> {
             Intent intent = new Intent(loginActivity.this, signupActivity.class);
             startActivity(intent);
