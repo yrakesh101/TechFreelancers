@@ -23,7 +23,7 @@ public class RetrofitClient {
 
     public static Retrofit getInstance(Context context) {
         // load base api url and request timeout from config file
-        Properties config = ConfigUtils.loadConfig(context);
+        Properties config = ConfigUtil.loadConfig(context);
         String baseApiUrl;
         int requestTimeout;
         if (config != null) {
