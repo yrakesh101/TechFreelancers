@@ -1,5 +1,6 @@
 package com.example.techfreelancers;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class signupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         signUpBinding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(signUpBinding.getRoot());
+
         setVariable();
     }
 
@@ -67,12 +69,17 @@ public class signupActivity extends AppCompatActivity {
                     Toast.makeText(signupActivity.this, "Password doesn't equal to confirm password.", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String hashPassword = HashUtil.hashPassword(password, getApplicationContext());
-                Retrofit retrofit = RetrofitClient.getInstance(getApplicationContext());
+                String hashPassword = HashUtil.hashPassword(password, signupActivity.this);
+                Retrofit retrofit = RetrofitClient.getInstance(signupActivity.this);
+                ProgressDialog progressDialog = new ProgressDialog(signupActivity.this, 1);
+                progressDialog.setMessage("Loading...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
                 Call<ResponseModel> call = retrofit.create(UserApi.class).userRegister(new RegisterForm(email, hashPassword));
                 call.enqueue(new Callback<ResponseModel>() {
                     @Override
                     public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                        progressDialog.dismiss();
                         if (response.isSuccessful() && response.body() != null) {
                             ResponseModel responseModel = response.body();
                             if (responseModel.getSuccess() && responseModel.getStatus() == 200) {
@@ -94,6 +101,7 @@ public class signupActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseModel> call, Throwable t) {
+                        progressDialog.dismiss();
                         Toast.makeText(signupActivity.this, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

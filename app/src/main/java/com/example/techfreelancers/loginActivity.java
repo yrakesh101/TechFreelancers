@@ -1,8 +1,8 @@
 package com.example.techfreelancers;
-import androidx.appcompat.widget.AppCompatButton;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -67,13 +67,13 @@ public class loginActivity extends AppCompatActivity {
     private void doUserLogin() {
         String email = loginBinding.emailEditText.getText().toString().trim();
         String password = loginBinding.passwordEditText.getText().toString().trim();
-        if(!"".equals(email) && email.length() > 0) {
+        if (!"".equals(email) && email.length() > 0) {
 
         } else {
             Toast.makeText(loginActivity.this, "Email cannot be null.", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(!"".equals(password) && password.length() > 0) {
+        if (!"".equals(password) && password.length() > 0) {
 
         } else {
             Toast.makeText(loginActivity.this, "Password cannot be null.", Toast.LENGTH_SHORT).show();
@@ -81,13 +81,18 @@ public class loginActivity extends AppCompatActivity {
         }
         String hashPassword = HashUtil.hashPassword(password, getApplicationContext());
         Retrofit retrofit = RetrofitClient.getInstance(this);
+        ProgressDialog progressDialog = new ProgressDialog(loginActivity.this, 1);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         Call<ResponseModel> call = retrofit.create(UserApi.class).userLogin(new LoginForm(email, hashPassword));
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                progressDialog.dismiss();
                 if (response.isSuccessful() && response.body() != null) {
                     ResponseModel responseModel = response.body();
-                    if(responseModel.getSuccess() && responseModel.getStatus() == 200) {
+                    if (responseModel.getSuccess() && responseModel.getStatus() == 200) {
                         Map responseData = (LinkedTreeMap) responseModel.getData();
                         // save user information
                         SessionManager.saveUserSession(loginActivity.this, responseData);
@@ -109,6 +114,7 @@ public class loginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
+                progressDialog.dismiss();
                 Toast.makeText(loginActivity.this, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
