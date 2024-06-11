@@ -1,11 +1,13 @@
 package com.example.techfreelancers;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.techfreelancers.api.ResponseModel;
 import com.example.techfreelancers.api.UserApi;
@@ -34,7 +36,9 @@ public class signupActivity extends AppCompatActivity {
         setContentView(signUpBinding.getRoot());
 
         setVariable();
+
     }
+
 
     private void setVariable() {
         signUpBinding.signupButton.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +109,16 @@ public class signupActivity extends AppCompatActivity {
                         Toast.makeText(signupActivity.this, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+
+            }
+
+        });
+        signUpBinding.loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(signupActivity.this, loginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6f4c42"
+    android:background="#FFB6C1"
     tools:context=".loginActivity">
 
     <ScrollView
@@ -131,47 +131,5 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <!--    <EditText-->
-    <!--        android:id="@+id/emailEditText"-->
-    <!--        android:layout_width="347dp"-->
-    <!--        android:layout_height="48dp"-->
-    <!--        android:background="@drawable/round_edit_text"-->
-    <!--        android:hint="Enter your email"-->
-    <!--        android:inputType="textEmailAddress"-->
-    <!--        android:padding="10dp"-->
-    <!--        android:textColor="@android:color/black"-->
-    <!--        android:textColorHint="@android:color/darker_gray"-->
-    <!--        tools:layout_editor_absoluteX="32dp"-->
-    <!--        tools:layout_editor_absoluteY="400dp" />-->
-
-    <!--    <EditText-->
-    <!--        android:id="@+id/passwordEditText"-->
-    <!--        android:layout_width="347dp"-->
-    <!--        android:layout_height="48dp"-->
-    <!--        android:background="@drawable/round_edit_text"-->
-    <!--        android:hint="Enter your password"-->
-    <!--        android:inputType="textPassword"-->
-    <!--        android:padding="10dp"-->
-    <!--        android:textColor="@android:color/black"-->
-    <!--        android:textColorHint="@android:color/darker_gray"-->
-    <!--        tools:layout_editor_absoluteX="32dp"-->
-    <!--        tools:layout_editor_absoluteY="464dp" />-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/loginButton"-->
-    <!--        android:layout_width="343dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:text="Login"-->
-    <!--        tools:layout_editor_absoluteX="34dp"-->
-    <!--        tools:layout_editor_absoluteY="544dp" />-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/signupButton"-->
-    <!--        android:layout_width="337dp"-->
-    <!--        android:layout_height="56dp"-->
-    <!--        android:text="Sign Up"-->
-    <!--        tools:layout_editor_absoluteX="37dp"-->
-    <!--        tools:layout_editor_absoluteY="610dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
