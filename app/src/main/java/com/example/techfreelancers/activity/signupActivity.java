@@ -1,4 +1,4 @@
-package com.example.techfreelancers;
+package com.example.techfreelancers.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.techfreelancers.api.ResponseModel;
 import com.example.techfreelancers.api.UserApi;

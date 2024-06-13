@@ -1,4 +1,4 @@
-package com.example.techfreelancers;
+package com.example.techfreelancers.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.techfreelancers.R;
 import com.example.techfreelancers.api.ResponseModel;
 import com.example.techfreelancers.api.UserApi;
 import com.example.techfreelancers.api.form.LoginForm;
@@ -97,6 +98,9 @@ public class loginActivity extends AppCompatActivity {
                         // save user information
                         SessionManager.saveUserSession(loginActivity.this, responseData);
                         Toast.makeText(loginActivity.this, "Login successful: " + responseData.get("email"), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(loginActivity.this, searchActivity.class); // Replace SearchActivity.class with your actual search activity class
+                        startActivity(intent);//for navigation to search activity page
+                        finish();
                     } else {
                         Toast.makeText(loginActivity.this, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
                     }

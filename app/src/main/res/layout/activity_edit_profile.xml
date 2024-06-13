@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFB6C1"
-    tools:context=".searchResultActivity">
+    tools:context=".activity.searchResultActivity">
 <!--face tag me reference-->
     <ScrollView
         android:id="@+id/scrollView2"
@@ -32,14 +32,14 @@
                 android:layout_margin="16dp">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/backButton"
                     android:layout_width="0dp"
                     android:layout_height="49dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="294dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                    app:layout_constraintEnd_toStartOf="@+id/saveIcon"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/arrow" />
@@ -57,17 +57,17 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintStart_toEndOf="@+id/backButton"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/saveIcon"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_marginEnd="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintStart_toEndOf="@+id/backButton"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/save" />
 

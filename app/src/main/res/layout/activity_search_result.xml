@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFB6C1"
-    tools:context=".searchResultActivity">
+    tools:context=".activity.searchResultActivity">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -32,7 +32,7 @@
                 android:layout_margin="16dp">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/backButton"
                     android:layout_width="50dp"
                     android:layout_height="58dp"
                     android:layout_marginStart="4dp"
@@ -53,12 +53,12 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView10"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintEnd_toStartOf="@+id/accountTV"
+                    app:layout_constraintStart_toEndOf="@+id/backButton"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView10"
+                    android:id="@+id/accountTV"
                     android:layout_width="45dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="9dp"

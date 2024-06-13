@@ -6,18 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFB6C1"
-    tools:context=".searchActivity">
+    tools:context=".activity.searchActivity">
 
     <ScrollView
         android:layout_width="409dp"
         android:layout_height="889dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -25,7 +31,7 @@
                 android:layout_margin="16dp">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/menu"
                     android:layout_width="44dp"
                     android:layout_height="38dp"
                     android:layout_marginStart="4dp"
@@ -35,7 +41,7 @@
                     app:srcCompat="@drawable/menu" />
 
                 <TextView
-                    android:id="@+id/searchTextView"
+                    android:id="@+id/welcomeTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="101dp"
@@ -46,12 +52,12 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView10"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintEnd_toStartOf="@+id/accountTV"
+                    app:layout_constraintStart_toEndOf="@+id/menu"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView10"
+                    android:id="@+id/accountTV"
                     android:layout_width="45dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="9dp"
@@ -84,16 +90,16 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView16"
+                        android:id="@+id/searchEditText"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:padding="8dp"
                         android:hint="Search Posts"
+                        android:padding="8dp"
                         android:textAlignment="center"
-                        android:textSize="16sp"
                         android:textColor="@color/black"
-                        android:textColorHint="@android:color/holo_red_dark" />
+                        android:textColorHint="@android:color/holo_red_dark"
+                        android:textSize="16sp" />
 
                     <ImageView
                         android:id="@+id/searchButton"
@@ -118,10 +124,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -141,7 +147,7 @@
                     <Spinner
                         android:id="@+id/spinnerLocation"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="48dp"
                         android:layout_marginStart="4dp"
                         android:layout_weight="1"
                         android:background="@null" />
@@ -166,7 +172,7 @@
                     <Spinner
                         android:id="@+id/spinnerTime"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="48dp"
                         android:layout_marginStart="4dp"
                         android:layout_weight="1"
                         android:background="@null" />
@@ -189,7 +195,7 @@
                     <Spinner
                         android:id="@+id/spinnerAmount"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="48dp"
                         android:layout_marginStart="4dp"
                         android:layout_weight="1"
                         android:background="@null" />
@@ -199,8 +205,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="24dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:orientation="horizontal">
 
@@ -209,18 +215,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:text="Trending Posts"
                     android:textColor="@color/black"
                     android:textSize="22dp"
-                    android:textStyle="bold"
-                    android:text="Trending Posts" />
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView18"
+                    android:id="@+id/viewAllTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/maroon"
+                    android:text="VIEW ALL"
 
-                    android:text="VIEW ALL" />
+                    android:textColor="@color/maroon" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -252,11 +258,11 @@
                 android:id="@+id/textView19"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="22dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:padding="16dp"
-                android:text="Choose Categories" />
+                android:text="Choose Categories"
+                android:textColor="@color/black"
+                android:textSize="22dp"
+                android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

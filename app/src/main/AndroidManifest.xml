@@ -15,19 +15,19 @@
         android:theme="@style/Theme.TechFreelancers"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".editProfileActivity"
+            android:name=".activity.editProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".profileActivity"
+            android:name=".activity.profileActivity"
             android:exported="false" />
         <activity
-            android:name=".searchResultActivity"
+            android:name=".activity.searchResultActivity"
             android:exported="false" />
         <activity
-            android:name=".searchActivity"
+            android:name=".activity.searchActivity"
             android:exported="false" />
         <activity
-            android:name=".loginActivity"
+            android:name=".activity.loginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".signupActivity" />
+        <activity android:name=".activity.signupActivity" />
     </application>
 
 </manifest>
