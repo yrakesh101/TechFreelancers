@@ -57,6 +57,8 @@ public class searchActivity extends AppCompatActivity {
         List<trendingGigs> gigsList = new ArrayList<>();
         gigsList.add(new trendingGigs("Project 1", "$1000", "2 weeks", "Description of Project 1"));
         gigsList.add(new trendingGigs("Project 2", "$2000", "3 weeks", "Description of Project 2"));
+        gigsList.add(new trendingGigs("Project 3", "$1000", "2 weeks", "Description of Project 1"));
+        gigsList.add(new trendingGigs("Project 4", "$2000", "3 weeks", "Description of Project 2"));
         // logic here
         return gigsList;
     }
@@ -66,6 +68,9 @@ public class searchActivity extends AppCompatActivity {
         categories.add(new category("Category 1"));
         categories.add(new category("Category 2"));
         categories.add(new category("Category 3"));
+        categories.add(new category("Category 4"));
+        categories.add(new category("Category 5"));
+        categories.add(new category("Category 6"));
         // Add more data fetching logic here
         return categories;
     }
