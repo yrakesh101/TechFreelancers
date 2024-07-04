@@ -57,6 +57,7 @@
                 android:background="@drawable/textbackground"
                 android:layout_height="52dp"
                 android:ems="10"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:hint="Email address"
                 android:textAlignment="center"
@@ -74,6 +75,7 @@
                 android:ems="10"
                 android:textSize="16sp"
                 android:hint="Password"
+                android:textColor="@color/white"
                 android:textAlignment="center"
                 android:textColorHint="@color/white"
                 android:inputType="textPassword" />
