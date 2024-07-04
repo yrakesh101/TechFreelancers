@@ -52,5 +52,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#808080</color>
+    <color name="logo_bg">#736552</color>
+    <color name="main_background">#311C00</color>
+    <color name="background_3">#82a6a5</color>
+    <color name="background_4">#335e55</color>
+    <color name="background_5">#7b8280</color>
+    <color name="background_6">#4279c3</color>
+    <color name="background_7">#000000</color>
+    <color name="background_8">#000000</color>
+
 
 </resources>
