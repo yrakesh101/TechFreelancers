@@ -25,5 +25,7 @@ public class editProfileActivity extends AppCompatActivity {
         });
         ImageView backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish());
+
+
     }
 }
