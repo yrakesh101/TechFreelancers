@@ -2,13 +2,10 @@ package com.example.techfreelancers.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.MenuItem;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +14,8 @@ import com.example.techfreelancers.adapter.trendingGigsAdapter;
 import com.example.techfreelancers.model.trendingGigs;
 import com.example.techfreelancers.adapter.categoryAdapter;
 import com.example.techfreelancers.model.category;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,14 +42,32 @@ public class searchActivity extends AppCompatActivity {
 
         adapter = new trendingGigsAdapter(trendingGigsList);
         recyclerView.setAdapter(adapter);
+
         categoryRecyclerView = findViewById(R.id.categoryView);
         categoryRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         categoryList = fetchCategoriesFromDatabase();
         categoryAdapter = new categoryAdapter(categoryList);
         categoryRecyclerView.setAdapter(categoryAdapter);
-    }
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.nav_home) {
+                    startActivity(new Intent(searchActivity.this, searchActivity.class));
+                    return true;
+                } else if (item.getItemId() == R.id.nav_search) {
+                    startActivity(new Intent(searchActivity.this, searchActivity.class));
+                    return true;
+                } else if (item.getItemId() == R.id.nav_settings) {
+                    startActivity(new Intent(searchActivity.this, settingActivity.class));
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
 
     private List<trendingGigs> fetchDataFromDatabase() {
         // Mock data for demonstration
@@ -62,6 +79,7 @@ public class searchActivity extends AppCompatActivity {
         // logic here
         return gigsList;
     }
+
     private List<category> fetchCategoriesFromDatabase() {
         // Mock data for demonstration
         List<category> categories = new ArrayList<>();

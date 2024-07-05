@@ -15,6 +15,9 @@
         android:theme="@style/Theme.TechFreelancers"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.settingActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.editProfileActivity"
             android:exported="false" />
         <activity
@@ -35,7 +38,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.signupActivity" />
     </application>
 
