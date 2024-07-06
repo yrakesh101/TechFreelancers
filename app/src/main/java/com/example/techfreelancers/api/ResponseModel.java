@@ -2,7 +2,7 @@ package com.example.techfreelancers.api;
 
 import java.io.Serializable;
 
-public class ResponseModel implements Serializable {
+public class ResponseModel<T> implements Serializable {
 
     private int status = 200;
 
@@ -10,7 +10,7 @@ public class ResponseModel implements Serializable {
 
     private String message;
 
-    private Object data;
+    private T data;
 
     public int getStatus() {
         return status;
@@ -36,11 +36,11 @@ public class ResponseModel implements Serializable {
         this.message = message;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 }
