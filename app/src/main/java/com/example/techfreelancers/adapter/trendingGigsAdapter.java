@@ -9,13 +9,13 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
-import com.example.techfreelancers.model.trendingGigs;
+import com.example.techfreelancers.api.model.TechProject;
 
 import java.util.List;
 
 public class trendingGigsAdapter extends RecyclerView.Adapter<trendingGigsAdapter.ViewHolder> {
 
-    private List<trendingGigs> trendingGigsList;
+    private List<TechProject> trendingGigsList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView projectTitle;
@@ -34,7 +34,7 @@ public class trendingGigsAdapter extends RecyclerView.Adapter<trendingGigsAdapte
         }
     }
 
-    public trendingGigsAdapter(List<trendingGigs> trendingGigsList) {
+    public trendingGigsAdapter(List<TechProject> trendingGigsList) {
         this.trendingGigsList = trendingGigsList;
     }
 
@@ -47,11 +47,11 @@ public class trendingGigsAdapter extends RecyclerView.Adapter<trendingGigsAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        trendingGigs gig = trendingGigsList.get(position);
+        TechProject gig = trendingGigsList.get(position);
         holder.projectTitle.setText(gig.getProjectTitle());
-        holder.cost.setText(gig.getCost());
+        holder.cost.setText(gig.getProjectCost().toString());
         holder.timeSpan.setText(gig.getTimeSpan());
-        holder.descriptionDetails.setText(gig.getDescriptionDetails());
+        holder.descriptionDetails.setText(gig.getProjectDetail());
         // Set profile picture if available
         // holder.profilePic.setImageResource(gig.getProfilePicResource());
     }
