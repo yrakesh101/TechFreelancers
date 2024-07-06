@@ -3,6 +3,7 @@ package com.example.techfreelancers.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -43,6 +44,14 @@ public class settingActivity extends AppCompatActivity {
                     return true;
                 }
                 return false;
+            }
+        });
+
+        ImageView profileImageView = findViewById(R.id.profile);
+        profileImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(settingActivity.this, profileActivity.class));
             }
         });
     }

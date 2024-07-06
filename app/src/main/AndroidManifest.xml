@@ -15,6 +15,9 @@
         android:theme="@style/Theme.TechFreelancers"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.messagesActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.settingActivity"
             android:exported="false" />
         <activity
