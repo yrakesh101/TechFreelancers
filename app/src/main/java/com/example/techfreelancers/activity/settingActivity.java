@@ -33,7 +33,10 @@ public class settingActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.nav_home) {
+                if (item.getItemId() == R.id.nav_messages) {
+                    startActivity(new Intent(settingActivity.this, messagesActivity.class));
+                    return true;
+                }else if (item.getItemId() == R.id.nav_home) {
                     startActivity(new Intent(settingActivity.this, searchActivity.class));
                     return true;
                 } else if (item.getItemId() == R.id.nav_search) {

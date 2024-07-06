@@ -43,7 +43,10 @@ public class profileActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.nav_home) {
+                if (item.getItemId() == R.id.nav_messages) {
+                    startActivity(new Intent(profileActivity.this, messagesActivity.class));
+                    return true;
+                } else if (item.getItemId() == R.id.nav_home) {
                     startActivity(new Intent(profileActivity.this, searchActivity.class));
                     return true;
                 } else if (item.getItemId() == R.id.nav_search) {
