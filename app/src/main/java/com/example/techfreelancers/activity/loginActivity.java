@@ -21,7 +21,6 @@ import com.example.techfreelancers.databinding.ActivityLoginBinding;
 import com.example.techfreelancers.utils.HashUtil;
 import com.example.techfreelancers.utils.RetrofitClient;
 import com.example.techfreelancers.utils.SessionManager;
-import com.google.gson.internal.LinkedTreeMap;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -86,15 +85,15 @@ public class loginActivity extends AppCompatActivity {
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.show();
-        Call<ResponseModel> call = retrofit.create(UserApi.class).userLogin(new LoginForm(email, hashPassword));
-        call.enqueue(new Callback<ResponseModel>() {
+        Call<ResponseModel<Map>> call = retrofit.create(UserApi.class).userLogin(new LoginForm(email, hashPassword));
+        call.enqueue(new Callback<ResponseModel<Map>>() {
             @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+            public void onResponse(Call<ResponseModel<Map>> call, Response<ResponseModel<Map>> response) {
                 progressDialog.dismiss();
                 if (response.isSuccessful() && response.body() != null) {
                     ResponseModel responseModel = response.body();
                     if (responseModel.getSuccess() && responseModel.getStatus() == 200) {
-                        Map responseData = (LinkedTreeMap) responseModel.getData();
+                        Map responseData = (Map) responseModel.getData();
                         // save user information
                         SessionManager.saveUserSession(loginActivity.this, responseData);
                         Toast.makeText(loginActivity.this, "Login successful: " + responseData.get("email"), Toast.LENGTH_SHORT).show();
@@ -117,7 +116,7 @@ public class loginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
+            public void onFailure(Call<ResponseModel<Map>> call, Throwable t) {
                 progressDialog.dismiss();
                 Toast.makeText(loginActivity.this, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }

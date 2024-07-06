@@ -3,6 +3,8 @@ package com.example.techfreelancers.api;
 import com.example.techfreelancers.api.form.LoginForm;
 import com.example.techfreelancers.api.form.RegisterForm;
 
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -23,5 +25,5 @@ public interface UserApi {
      * @return
      */
     @POST("/mobile/user/login")
-    Call<ResponseModel> userLogin(@Body LoginForm loginRequest);
+    Call<ResponseModel<Map>> userLogin(@Body LoginForm loginRequest);
 }
