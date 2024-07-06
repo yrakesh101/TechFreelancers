@@ -8,14 +8,14 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
-import com.example.techfreelancers.model.category;
-import java.util.ArrayList;
+import com.example.techfreelancers.api.model.DictValue;
+
 import java.util.List;
 
 
 public class categoryAdapter extends RecyclerView.Adapter<categoryAdapter.ViewHolder> {
 
-    private List<category> categoryList;
+    private List<DictValue> categoryList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView categoryName;
@@ -26,7 +26,7 @@ public class categoryAdapter extends RecyclerView.Adapter<categoryAdapter.ViewHo
         }
     }
 
-    public categoryAdapter(List<category> categoryList) {
+    public categoryAdapter(List<DictValue> categoryList) {
         this.categoryList = categoryList;
     }
 
@@ -39,8 +39,8 @@ public class categoryAdapter extends RecyclerView.Adapter<categoryAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        category category = categoryList.get(position);
-        holder.categoryName.setText(category.getCategoryName());
+        DictValue category = categoryList.get(position);
+        holder.categoryName.setText(category.getDictValueName());
     }
 
     @Override
