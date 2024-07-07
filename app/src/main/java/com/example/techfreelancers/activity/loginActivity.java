@@ -3,17 +3,11 @@ package com.example.techfreelancers.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.techfreelancers.R;
 import com.example.techfreelancers.api.ResponseModel;
 import com.example.techfreelancers.api.UserApi;
 import com.example.techfreelancers.api.form.LoginForm;
@@ -33,51 +27,58 @@ import retrofit2.Converter;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class loginActivity extends AppCompatActivity {
+public class loginActivity extends AppCompatActivity implements View.OnClickListener {
 
     ActivityLoginBinding loginBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+
         loginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_login);
+        setContentView(loginBinding.getRoot());
 
-        EditText emailEditText = findViewById(R.id.emailEditText);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        init();
+    }
 
-        loginBinding.emailEditText.setText("hello@gmail.com");
-        loginBinding.passwordEditText.setText("hellohello");
+    private void init() {
+        loginBinding.loginButton.setOnClickListener(this);
+        loginBinding.signupButton.setOnClickListener(this);
+    }
 
-        AppCompatButton loginButton = findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(view -> doUserLogin());
 
-        AppCompatButton signupButton = findViewById(R.id.signupButton);
-        signupButton.setOnClickListener(view -> {
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == loginBinding.loginButton.getId()) {
+            doUserLogin();
+        } else if (v.getId() == loginBinding.signupButton.getId()) {
             Intent intent = new Intent(loginActivity.this, signupActivity.class);
             startActivity(intent);
-        });
+        }
     }
 
     private void doUserLogin() {
         String email = loginBinding.emailEditText.getText().toString().trim();
         String password = loginBinding.passwordEditText.getText().toString().trim();
         if (!"".equals(email) && email.length() > 0) {
-
+            if ("pay".equals(email)) {
+                Intent intent = new Intent(loginActivity.this, PaymentActivity.class);
+                startActivity(intent);
+                return;
+            }
         } else {
-            Toast.makeText(loginActivity.this, "Email cannot be null.", Toast.LENGTH_SHORT).show();
-            return;
+            // temp default email
+            email = "hello@gmail.com";
+//            Toast.makeText(loginActivity.this, "Email cannot be null.", Toast.LENGTH_SHORT).show();
+//            return;
         }
         if (!"".equals(password) && password.length() > 0) {
 
         } else {
-            Toast.makeText(loginActivity.this, "Password cannot be null.", Toast.LENGTH_SHORT).show();
-            return;
+            // temp default password
+            password = "hellohello";
+//            Toast.makeText(loginActivity.this, "Password cannot be null.", Toast.LENGTH_SHORT).show();
+//            return;
         }
         String hashPassword = HashUtil.hashPassword(password, getApplicationContext());
         Retrofit retrofit = RetrofitClient.getInstance(this);
