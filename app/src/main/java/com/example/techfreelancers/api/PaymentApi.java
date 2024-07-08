@@ -4,6 +4,7 @@ import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface PaymentApi {
 
@@ -11,6 +12,6 @@ public interface PaymentApi {
      * Query recommend projects
      * @return
      */
-    @GET("/payment/init")
-    Call<ResponseModel<Map>> initPaymentParrm();
+    @GET("/payment/project")
+    Call<ResponseModel<Map>> initPaymentParrm(@Query("projectId") Integer projectId);
 }
