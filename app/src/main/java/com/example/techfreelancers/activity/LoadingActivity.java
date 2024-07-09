@@ -53,10 +53,10 @@ public class LoadingActivity extends AppCompatActivity {
                     handler.postDelayed(this, INTERVAL);
                 } else {
                     // Transition to main content after countdown
-                    Toast.makeText(LoadingActivity.this, "Go to login page", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoadingActivity.this, loginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
+                    finish();
                 }
             }
         };

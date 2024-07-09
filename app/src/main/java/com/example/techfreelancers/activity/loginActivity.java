@@ -1,7 +1,11 @@
 package com.example.techfreelancers.activity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -44,6 +48,18 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     private void init() {
         loginBinding.loginButton.setOnClickListener(this);
         loginBinding.signupButton.setOnClickListener(this);
+        
+        checkLoginStatus();
+    }
+
+    private void checkLoginStatus() {
+        SharedPreferences sharedPreferences = getSharedPreferences("LOGIN_USER_INFO", Context.MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("IS_LOGIN", false)) {
+            Toast.makeText(this, "Already login, go to search.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(loginActivity.this, searchActivity.class); // Replace SearchActivity.class with your actual search activity class
+            startActivity(intent);//for navigation to search activity page
+            finish();
+        }
     }
 
 
