@@ -40,7 +40,7 @@ public class settingActivity extends AppCompatActivity {
                     startActivity(new Intent(settingActivity.this, searchActivity.class));
                     return true;
                 } else if (item.getItemId() == R.id.nav_search) {
-                    startActivity(new Intent(settingActivity.this, searchActivity.class));
+                    startActivity(new Intent(settingActivity.this, viewAllActivity.class));
                     return true;
                 } else if (item.getItemId() == R.id.nav_settings) {
                     startActivity(new Intent(settingActivity.this, settingActivity.class));

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background='@color/main_background'
-    tools:context=".activity.searchActivity">
+    tools:context=".activity.viewAllActivity">
 
     <ScrollView
         android:layout_width="409dp"
@@ -38,10 +38,10 @@
                     android:layout_marginTop="18dp"
                     android:layout_marginEnd="94dp"
                     android:layout_marginBottom="18dp"
-                    android:text="Welcome"
+                    android:text="View all"
                     android:textSize="20sp"
+                    android:textColor="@color/white"
                     android:textStyle="bold"
-
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/accountTV"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -61,6 +61,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:orientation="horizontal">
@@ -70,37 +78,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Trending Posts"
+                    android:text="All the posted Gigs"
                     android:textColor="@color/white"
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/viewAllTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="VIEW ALL"
-
-                    android:textColor="@color/white" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="560dp">
+                android:layout_height="408dp">
 
                 <ProgressBar
-                    android:id="@+id/progressTrendingPosts"
+                    android:id="@+id/progressPosts"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:indeterminateTint="#221717"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/trendingsPostsView"
-                    app:layout_constraintStart_toStartOf="@+id/trendingsPostsView"
+                    app:layout_constraintEnd_toEndOf="@+id/PostsView"
+                    app:layout_constraintStart_toStartOf="@+id/PostsView"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/trendingsPostsView"
+                    android:id="@+id/PostsView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/main_background"
@@ -110,43 +111,9 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Choose Categories"
-                android:textColor="@color/white"
-                android:textSize="22dp"
-                android:textStyle="bold" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ProgressBar
-                    android:id="@+id/progressBarCategory"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:indeterminateTint="#0E0D0D"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/categoryView"
-                    app:layout_constraintTop_toTopOf="@+id/categoryView" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/categoryView"
-                    android:layout_width="407dp"
-                    android:layout_height="80dp"
-                    android:background="@color/main_background"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent"/>
         </LinearLayout>
     </ScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView
