@@ -33,11 +33,7 @@ public class profileActivity extends AppCompatActivity {
             Intent intent = new Intent(profileActivity.this, editProfileActivity.class);
             startActivity(intent);
         });
-        ImageView menuImageView = findViewById(R.id.menuImageView);
-        menuImageView.setOnClickListener(v -> {
-            Intent intent = new Intent(profileActivity.this, menuActivity.class);
-            startActivity(intent);
-        });
+
 
         BottomNavigationView bottomNavigationView =findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

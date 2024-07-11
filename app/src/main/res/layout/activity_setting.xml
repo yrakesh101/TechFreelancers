@@ -11,11 +11,15 @@
     <!-- Top Image Views -->
     <LinearLayout
         android:id="@+id/topImagesContainer"
-        android:layout_width="446dp"
-        android:layout_height="98dp"
+        android:layout_width="437dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="42dp"
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
         android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -42,13 +46,17 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="436dp"
-        android:layout_height="773dp"
+        android:id="@+id/scrollView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="14dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topImagesContainer">
+        app:layout_constraintTop_toBottomOf="@+id/topImagesContainer">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,16 +64,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/logOutButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                android:background="@drawable/setting_btn_bg"
-                android:text="Log Out"
-                android:textSize="16sp"
-                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/deleteAccountBTN"
@@ -78,12 +76,32 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/loginButton"
+                android:id="@+id/helpTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:background="@drawable/setting_btn_bg"
-                android:text="LOGIN"
+                android:text="Help"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/aboutTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/setting_btn_bg"
+                android:text="About"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/logOutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/setting_btn_bg"
+                android:text="Log Out"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -91,15 +109,14 @@
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
+        android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginBottom="4dp"
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView5"
         app:menu="@menu/bottom_nav_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
