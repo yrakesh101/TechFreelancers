@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_search" />
 
     <fragment
+        android:id="@+id/nav_message"
+        android:name="com.example.techfreelancers.fragment.MessageFragment"
+        android:label="@string/title_message"
+        tools:layout="@layout/fragment_message" />
+
+    <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.techfreelancers.fragment.SettingsFragment"
         android:label="@string/title_settings"

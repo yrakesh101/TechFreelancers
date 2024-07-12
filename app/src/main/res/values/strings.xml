@@ -12,5 +12,6 @@
     <string name="sort_by_prompt">Sort by</string>
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
+    <string name="title_message">Message</string>
     <string name="title_settings">Settings</string>
 </resources>
