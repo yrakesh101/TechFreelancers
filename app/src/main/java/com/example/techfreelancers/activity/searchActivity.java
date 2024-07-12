@@ -60,7 +60,7 @@ public class searchActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.nav_messages) {
-                    startActivity(new Intent(searchActivity.this, messagesActivity.class));
+                    startActivity(new Intent(searchActivity.this, postGigActivity.class));
                     return true;
                 }
                 else if (item.getItemId() == R.id.nav_home) {
