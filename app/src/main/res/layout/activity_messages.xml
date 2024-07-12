@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -5,268 +6,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    tools:context=".activity.gigDetailsActivity">
+    tools:context=".activity.messagesActivity">
 
-    <!-- Top Bar -->
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="448dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="24dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="20dp"
-            android:layout_height="52dp"
-            android:layout_weight="1"
-            android:src="@drawable/arrow" />
-
         <TextView
             android:id="@+id/textView"
-            android:layout_width="340dp"
+            android:layout_width="341dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="78dp"
             android:layout_weight="1"
-            android:text="Post a Gig         "
+            android:text="Messages"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold" />
 
-    </LinearLayout>
-
-    <!-- Profile Section -->
-    <LinearLayout
-        android:id="@+id/profileSection"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="31dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginEnd="41dp">
-
         <ImageView
-            android:id="@+id/profilePic"
-            android:layout_width="79dp"
-            android:layout_height="62dp"
-            android:background="@drawable/logo_corner"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/log" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="16dp">
-
-            <TextView
-                android:id="@+id/postedBy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Posted by:"
-                android:textStyle="italic" />
-
-            <TextView
-                android:id="@+id/usernames"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User name"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+            android:id="@+id/profile"
+            android:layout_width="103dp"
+            android:layout_height="59dp"
+            app:srcCompat="@drawable/user" />
 
     </LinearLayout>
-
-    <!-- Date Section -->
-    <LinearLayout
-        android:id="@+id/dateSection"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="115dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/profileSection"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_gravity="start"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="41dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginTop="8dp">
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            app:srcCompat="@drawable/time" />
-
-        <TextView
-            android:id="@+id/datePosted"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date"
-            android:textSize="20sp"
-            android:layout_marginStart="8dp" />
-
-    </LinearLayout>
-
-    <!-- Title Section -->
-    <LinearLayout
-        android:id="@+id/titleSection"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/dateSection"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp">
-
-        <TextView
-            android:id="@+id/Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Title:"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/updateTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="tittle should be here"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:layout_marginStart="8dp" />
-    </LinearLayout>
-
-    <!-- Price Section -->
-    <LinearLayout
-        android:id="@+id/priceSection"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/titleSection"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp">
-
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Price:"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:layout_marginStart="8dp" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            app:srcCompat="@drawable/dollar" />
-
-        <TextView
-            android:id="@+id/cost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="6000"
-            android:layout_marginStart="8dp" />
-    </LinearLayout>
-
-    <!-- Time Section -->
-    <LinearLayout
-        android:id="@+id/timeSection"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/priceSection"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp">
-
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time:"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:layout_marginStart="8dp" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            app:srcCompat="@drawable/time" />
-
-        <TextView
-            android:id="@+id/timeSpan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="6 weeks"
-            android:layout_marginStart="8dp" />
-    </LinearLayout>
-
-    <!-- Description Section -->
-    <LinearLayout
-        android:id="@+id/descriptionSection"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/timeSection"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp">
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Description"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="8dp">
-
-            <TextView
-                android:id="@+id/descriptionDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="This is the area where the details of the project is to be given"
-                android:padding="8dp" />
-
-        </ScrollView>
-    </LinearLayout>
-
-    <!-- Accept Button -->
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/acceptButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_background"
-        android:text="ACCEPT"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/descriptionSection"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
