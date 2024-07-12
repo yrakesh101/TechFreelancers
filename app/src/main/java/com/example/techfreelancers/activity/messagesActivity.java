@@ -47,23 +47,23 @@ public class messagesActivity extends AppCompatActivity {
         adapter = new MessagesAdapter(messageList);
         recyclerView.setAdapter(adapter);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.nav_home) {
-                    startActivity(new Intent(messagesActivity.this, searchActivity.class));
-                    return true;
-                } else if (item.getItemId() == R.id.nav_search) {
-                    startActivity(new Intent(messagesActivity.this, searchActivity.class));
-                    return true;
-                } else if (item.getItemId() == R.id.nav_settings) {
-                    startActivity(new Intent(messagesActivity.this, settingActivity.class));
-                    return true;
-                }
-                return false;
-            }
-        });
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+//        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                if (item.getItemId() == R.id.nav_home) {
+//                    startActivity(new Intent(messagesActivity.this, searchActivity.class));
+//                    return true;
+//                } else if (item.getItemId() == R.id.nav_search) {
+//                    startActivity(new Intent(messagesActivity.this, searchActivity.class));
+//                    return true;
+//                } else if (item.getItemId() == R.id.nav_settings) {
+//                    startActivity(new Intent(messagesActivity.this, settingActivity.class));
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
         ImageView profileImageView = findViewById(R.id.profile);
         profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,5 +1,7 @@
 package com.example.techfreelancers.adapter;
 
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
 import com.example.techfreelancers.api.model.TechProject;
+import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
-public class trendingGigsAdapter extends RecyclerView.Adapter<trendingGigsAdapter.ViewHolder> {
+public class trendingGigsAdapter<Bitmap> extends RecyclerView.Adapter<trendingGigsAdapter.ViewHolder> {
 
     private List<TechProject> trendingGigsList;
 
@@ -53,11 +60,35 @@ public class trendingGigsAdapter extends RecyclerView.Adapter<trendingGigsAdapte
         holder.timeSpan.setText(gig.getTimeSpan());
         holder.descriptionDetails.setText(gig.getProjectDetail());
         // Set profile picture if available
-        // holder.profilePic.setImageResource(gig.getProfilePicResource());
+//         holder.profilePic.setImageURI(https://cdn-icons-png.flaticon.com/128/3135/3135768.png);
+//        holder.profilePic.setImageBitmap(getBitmapFromURL("https://cdn-icons-png.flaticon.com/128/3135/3135768.png"));
+        Picasso.get()
+                .load("https://cdn-icons-png.flaticon.com/128/3135/3135768.png")
+                .placeholder(R.drawable.log) // Optional placeholder image
+                .error(R.drawable.error) // Optional error image
+                .into(holder.profilePic);
     }
 
     @Override
     public int getItemCount() {
         return trendingGigsList.size();
+    }
+
+    public android.graphics.Bitmap getBitmapFromURL(String src) {
+        try {
+            Log.e("src",src);
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = (Bitmap) BitmapFactory.decodeStream(input);
+            Log.e("Bitmap","returned");
+            return (android.graphics.Bitmap) myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+            return null;
+        }
     }
 }

@@ -33,27 +33,27 @@ public class settingActivity extends AppCompatActivity {
 
 
         });
-        BottomNavigationView bottomNavigationView =findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.nav_settings);
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.nav_messages) {
-                    startActivity(new Intent(settingActivity.this, messagesActivity.class));
-                    return true;
-                }else if (item.getItemId() == R.id.nav_home) {
-                    startActivity(new Intent(settingActivity.this, searchActivity.class));
-                    return true;
-                } else if (item.getItemId() == R.id.nav_search) {
-                    startActivity(new Intent(settingActivity.this, viewAllActivity.class));
-                    return true;
-                } else if (item.getItemId() == R.id.nav_settings) {
-                    startActivity(new Intent(settingActivity.this, settingActivity.class));
-                    return true;
-                }
-                return false;
-            }
-        });
+//        BottomNavigationView bottomNavigationView =findViewById(R.id.bottom_navigation);
+//        bottomNavigationView.setSelectedItemId(R.id.nav_settings);
+//        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                if (item.getItemId() == R.id.nav_messages) {
+//                    startActivity(new Intent(settingActivity.this, messagesActivity.class));
+//                    return true;
+//                }else if (item.getItemId() == R.id.nav_home) {
+//                    startActivity(new Intent(settingActivity.this, searchActivity.class));
+//                    return true;
+//                } else if (item.getItemId() == R.id.nav_search) {
+//                    startActivity(new Intent(settingActivity.this, viewAllActivity.class));
+//                    return true;
+//                } else if (item.getItemId() == R.id.nav_settings) {
+//                    startActivity(new Intent(settingActivity.this, settingActivity.class));
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
         ImageView profileImageView = findViewById(R.id.profile);
         profileImageView.setOnClickListener(new View.OnClickListener() {
