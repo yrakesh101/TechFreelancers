@@ -47,11 +47,6 @@ public class SettingsFragment extends Fragment {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ImageView editIcon = binding.editIcon;
-        editIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), editProfileActivity.class);
-            startActivity(intent);
-        });
 
         return root;
     }

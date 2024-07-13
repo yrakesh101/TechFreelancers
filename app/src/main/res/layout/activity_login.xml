@@ -96,6 +96,7 @@
                 android:layout_margin="32dp"
                 android:background="@drawable/btn_background"
                 android:text="LOGIN"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 />
