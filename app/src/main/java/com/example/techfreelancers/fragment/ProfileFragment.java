@@ -49,12 +49,6 @@ public class ProfileFragment extends Fragment {
             return insets;
         });
 
-        ImageView editIcon = binding.editIcon;
-        editIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), editProfileActivity.class);
-            startActivity(intent);
-        });
-
         return root;
     }
 
