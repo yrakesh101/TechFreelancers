@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
 import com.example.techfreelancers.activity.profileActivity;
-import com.example.techfreelancers.activity.viewAllActivity;
+
 import com.example.techfreelancers.adapter.categoryAdapter;
 import com.example.techfreelancers.adapter.trendingGigsAdapter;
 import com.example.techfreelancers.api.DictApi;
