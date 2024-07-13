@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_search"
-        android:name="com.example.techfreelancers.fragment.SearchFragment"
-        android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+        android:id="@+id/nav_category"
+        android:name="com.example.techfreelancers.fragment.CategoryFragment"
+        android:label="@string/title_category"
+        tools:layout="@layout/fragment_category" />
 
     <fragment
         android:id="@+id/nav_message"
@@ -24,8 +24,8 @@
         tools:layout="@layout/fragment_message" />
 
     <fragment
-        android:id="@+id/nav_settings"
-        android:name="com.example.techfreelancers.fragment.SettingsFragment"
-        android:label="@string/title_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:id="@+id/nav_profile"
+        android:name="com.example.techfreelancers.fragment.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

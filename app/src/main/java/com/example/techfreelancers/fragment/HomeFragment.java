@@ -1,23 +1,23 @@
 package com.example.techfreelancers.fragment;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
-import com.example.techfreelancers.activity.profileActivity;
-import com.example.techfreelancers.activity.viewAllActivity;
 import com.example.techfreelancers.adapter.categoryAdapter;
 import com.example.techfreelancers.adapter.trendingGigsAdapter;
 import com.example.techfreelancers.api.DictApi;
@@ -30,8 +30,6 @@ import com.example.techfreelancers.utils.RetrofitClient;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -52,6 +50,18 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        if (activity != null) {
+            ActionBar actionBar = activity.getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+                actionBar.setCustomView(R.layout.custom_action_bar);
+                actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF3700B3"))); // Set your color here
+                TextView title = actionBar.getCustomView().findViewById(R.id.action_bar_title);
+                title.setText("Home");
+            }
+        }
 
         recyclerView = binding.trendingsPostsView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

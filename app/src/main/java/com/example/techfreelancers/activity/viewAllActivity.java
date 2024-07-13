@@ -3,27 +3,20 @@ package com.example.techfreelancers.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
-import com.example.techfreelancers.adapter.categoryAdapter;
 import com.example.techfreelancers.adapter.trendingGigsAdapter;
-import com.example.techfreelancers.api.DictApi;
 import com.example.techfreelancers.api.ProjectApi;
 import com.example.techfreelancers.api.ResponseModel;
-import com.example.techfreelancers.api.model.DictValue;
 import com.example.techfreelancers.api.model.TechProject;
 import com.example.techfreelancers.utils.RetrofitClient;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
