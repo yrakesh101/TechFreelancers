@@ -38,7 +38,7 @@ public class mostVotedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_most_voted);
 
-        recyclerView = findViewById(R.id.PostsView);
+        recyclerView = findViewById(R.id.trendingsPostsView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
