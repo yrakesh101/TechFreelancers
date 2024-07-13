@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
+import com.example.techfreelancers.activity.mostVotedActivity;
 import com.example.techfreelancers.activity.profileActivity;
 
 import com.example.techfreelancers.adapter.categoryAdapter;
@@ -59,6 +60,17 @@ public class HomeFragment extends Fragment {
         categoryRecyclerView = binding.categoryView;
         categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
+        TextView mostVotedTV = root.findViewById(R.id.mostVotedTV);
+
+        // Set click listener
+        mostVotedTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open mostVotedActivity
+                Intent intent = new Intent(getContext(), mostVotedActivity.class);
+                startActivity(intent);
+            }
+        });
         init();
 
         return root;

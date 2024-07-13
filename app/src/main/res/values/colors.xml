@@ -60,6 +60,9 @@
     <color name="background_6">#4279c3</color>
     <color name="background_7">#000000</color>
     <color name="background_8">#000000</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
 
 
 </resources>

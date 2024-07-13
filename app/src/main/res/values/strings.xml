@@ -14,4 +14,6 @@
     <string name="title_category">Category</string>
     <string name="title_message">Message</string>
     <string name="title_profile">Profile</string>
+    <string name="upvote">Upvote</string>
+    <string name="downvote">Downvote</string>
 </resources>
