@@ -1,11 +1,11 @@
 package com.example.techfreelancers.adapter;
 
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,9 +17,20 @@ import java.util.List;
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MessageViewHolder> {
 
     private List<Message> messagesList;
+    private OnItemClickListener listener;
+
+    // Interface for item click events
+    public interface OnItemClickListener {
+        void onItemClick(Message message);
+    }
 
     public MessagesAdapter(List<Message> messagesList) {
         this.messagesList = messagesList;
+    }
+
+    // Method to set click listener from outside the adapter
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -36,6 +47,16 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
         holder.dateReceived.setText(message.getDateReceived());
         holder.lastMessage.setText(message.getLastMessage());
         holder.profilePic.setImageResource(message.getProfilePic());
+
+        // Set click listener
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(message);
+                }
+            }
+        });
     }
 
     @Override

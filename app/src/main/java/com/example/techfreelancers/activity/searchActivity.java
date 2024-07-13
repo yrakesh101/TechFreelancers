@@ -63,7 +63,7 @@ public class searchActivity extends AppCompatActivity {
 //                    startActivity(new Intent(searchActivity.this, searchActivity.class));
 //                    return true;
 //                } else if (item.getItemId() == R.id.nav_search) {
-//                    startActivity(new Intent(searchActivity.this, viewAllActivity.class));
+//                    startActivity(new Intent(searchActivity.this, mostVotedActivity.class));
 //                    return true;
 //                } else if (item.getItemId() == R.id.nav_settings) {
 //                    startActivity(new Intent(searchActivity.this, settingActivity.class));
@@ -85,7 +85,7 @@ public class searchActivity extends AppCompatActivity {
         profileTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(searchActivity.this, viewAllActivity.class));
+                startActivity(new Intent(searchActivity.this, mostVotedActivity.class));
             }
         });
 

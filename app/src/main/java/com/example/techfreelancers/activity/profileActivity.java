@@ -46,7 +46,7 @@ public class profileActivity extends AppCompatActivity {
 //                    startActivity(new Intent(profileActivity.this, searchActivity.class));
 //                    return true;
 //                } else if (item.getItemId() == R.id.nav_search) {
-//                    startActivity(new Intent(profileActivity.this, viewAllActivity.class));
+//                    startActivity(new Intent(profileActivity.this, mostVotedActivity.class));
 //                    return true;
 //                } else if (item.getItemId() == R.id.nav_settings) {
 //                    startActivity(new Intent(profileActivity.this, settingActivity.class));

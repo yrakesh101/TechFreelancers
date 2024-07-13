@@ -82,11 +82,13 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/viewAllTV"
+                    android:id="@+id/mostVotedTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="VIEW ALL"
-                    android:textColor="@color/white" />
+                    android:onClick="onMostVotedClicked"
+                    android:text="Top Voted Posts"
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

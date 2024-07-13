@@ -29,14 +29,14 @@ import retrofit2.Converter;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class viewAllActivity extends AppCompatActivity {
+public class mostVotedActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private trendingGigsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_all);
+        setContentView(R.layout.activity_most_voted);
 
         recyclerView = findViewById(R.id.PostsView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -47,17 +47,17 @@ public class viewAllActivity extends AppCompatActivity {
 //            @Override
 //            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 //                if (item.getItemId() == R.id.nav_messages) {
-//                    startActivity(new Intent(viewAllActivity.this, messagesActivity.class));
+//                    startActivity(new Intent(mostVotedActivity.this, messagesActivity.class));
 //                    return true;
 //                }
 //                else if (item.getItemId() == R.id.nav_home) {
-//                    startActivity(new Intent(viewAllActivity.this, searchActivity.class));
+//                    startActivity(new Intent(mostVotedActivity.this, searchActivity.class));
 //                    return true;
 //                } else if (item.getItemId() == R.id.nav_search) {
-//                    startActivity(new Intent(viewAllActivity.this, viewAllActivity.class));
+//                    startActivity(new Intent(mostVotedActivity.this, mostVotedActivity.class));
 //                    return true;
 //                } else if (item.getItemId() == R.id.nav_settings) {
-//                    startActivity(new Intent(viewAllActivity.this, settingActivity.class));
+//                    startActivity(new Intent(mostVotedActivity.this, settingActivity.class));
 //                    return true;
 //                }
 //                return false;
@@ -65,18 +65,12 @@ public class viewAllActivity extends AppCompatActivity {
 //        });
 
         init();
-        ImageView profileImageView = findViewById(R.id.accountTV);
-        profileImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(viewAllActivity.this, profileActivity.class));
-            }
-        });
+
     }
 
     private void init() {
         // show progress dialog
-        ProgressDialog progressDialog = new ProgressDialog(viewAllActivity.this, 1);
+        ProgressDialog progressDialog = new ProgressDialog(mostVotedActivity.this, 1);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.show();
@@ -104,14 +98,14 @@ public class viewAllActivity extends AppCompatActivity {
                         adapter = new trendingGigsAdapter(projects);
                         recyclerView.setAdapter(adapter);
                     } else {
-                        Toast.makeText(viewAllActivity.this, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mostVotedActivity.this, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Converter<ResponseBody, ResponseModel> converter = retrofit.responseBodyConverter(ResponseModel.class, new Annotation[0]);
                     ResponseModel errorModel = null;
                     try {
                         errorModel = converter.convert(response.errorBody());
-                        Toast.makeText(viewAllActivity.this, errorModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mostVotedActivity.this, errorModel.getMessage(), Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -120,7 +114,7 @@ public class viewAllActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseModel<List<TechProject>>> call, Throwable t) {
-                Toast.makeText(viewAllActivity.this, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mostVotedActivity.this, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

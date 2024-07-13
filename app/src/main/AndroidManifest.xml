@@ -29,7 +29,7 @@
             android:name=".activity.postGigActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.viewAllActivity"
+            android:name=".activity.mostVotedActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LoadingActivity"

@@ -1,5 +1,6 @@
 package com.example.techfreelancers.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -26,7 +27,6 @@ import java.util.List;
 public class MessageFragment extends Fragment {
 
     private FragmentMessageBinding messageBinding;
-
     private RecyclerView recyclerView;
     private MessagesAdapter adapter;
     private List<Message> messageList;
@@ -36,25 +36,26 @@ public class MessageFragment extends Fragment {
         messageBinding = FragmentMessageBinding.inflate(inflater, container, false);
         View root = messageBinding.getRoot();
 
+        // Customize ActionBar (Toolbar)
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         if (activity != null) {
             ActionBar actionBar = activity.getSupportActionBar();
             if (actionBar != null) {
                 actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-                actionBar.setCustomView(R.layout.custom_action_bar);
-                actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF3700B3"))); // Set your color here
+                actionBar.setCustomView(R.layout.custom_action_bar); // Set custom layout
+                actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF3700B3"))); // Set background color
                 TextView title = actionBar.getCustomView().findViewById(R.id.action_bar_title);
-                title.setText("Message");
+                title.setText("Message"); // Set custom title
             }
         }
 
-        init();
+        // Initialize RecyclerView and adapter
+        initRecyclerView();
 
         return root;
     }
 
-    private void init() {
-
+    private void initRecyclerView() {
         recyclerView = messageBinding.recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -62,9 +63,16 @@ public class MessageFragment extends Fragment {
         messageList = new ArrayList<>();
         messageList.add(new Message("User 1", "01/01/2024", "Hello", R.drawable.user));
         messageList.add(new Message("User 2", "02/01/2024", "Hi there", R.drawable.user));
-        // Add more sample data...
+        // Add more sample data as needed...
 
         adapter = new MessagesAdapter(messageList);
         recyclerView.setAdapter(adapter);
+
+        // Set item click listener
+        adapter.setOnItemClickListener(new MessagesAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Message message) {
+            }
+        });
     }
 }

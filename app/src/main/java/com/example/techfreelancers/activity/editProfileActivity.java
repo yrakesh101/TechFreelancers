@@ -48,7 +48,7 @@ public class editProfileActivity extends AppCompatActivity {
 //                    startActivity(new Intent(editProfileActivity.this, searchActivity.class));
 //                    return true;
 //                } else if (item.getItemId() == R.id.nav_search) {
-//                    startActivity(new Intent(editProfileActivity.this, viewAllActivity.class));
+//                    startActivity(new Intent(editProfileActivity.this, mostVotedActivity.class));
 //                    return true;
 //                } else if (item.getItemId() == R.id.nav_settings) {
 //                    startActivity(new Intent(editProfileActivity.this, settingActivity.class));

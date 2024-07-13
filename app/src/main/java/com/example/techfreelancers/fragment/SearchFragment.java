@@ -1,13 +1,10 @@
 package com.example.techfreelancers.fragment;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,23 +12,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.techfreelancers.R;
-import com.example.techfreelancers.activity.profileActivity;
-import com.example.techfreelancers.activity.viewAllActivity;
 import com.example.techfreelancers.adapter.categoryAdapter;
 import com.example.techfreelancers.adapter.trendingGigsAdapter;
-import com.example.techfreelancers.api.DictApi;
 import com.example.techfreelancers.api.ProjectApi;
 import com.example.techfreelancers.api.ResponseModel;
-import com.example.techfreelancers.api.model.DictValue;
 import com.example.techfreelancers.api.model.TechProject;
 import com.example.techfreelancers.databinding.FragmentSearchBinding;
 import com.example.techfreelancers.utils.RetrofitClient;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
