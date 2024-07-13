@@ -59,12 +59,12 @@
                     android:layout_height="wrap_content"
                     android:indeterminateTint="#221717"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/trendingsPostsView"
-                    app:layout_constraintStart_toStartOf="@+id/trendingsPostsView"
+                    app:layout_constraintEnd_toEndOf="@+id/mostVotedRecyclerView"
+                    app:layout_constraintStart_toStartOf="@+id/mostVotedRecyclerView"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/trendingsPostsView"
+                    android:id="@+id/mostVotedRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/main_background"
