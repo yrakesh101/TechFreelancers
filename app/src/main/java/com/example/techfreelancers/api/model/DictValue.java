@@ -22,6 +22,11 @@ public class DictValue {
      */
     private int dictKeyId;
 
+    /**
+     * Dict value name
+     */
+    private String note;
+
     public DictValue(String dictValueName) {
         this.dictValueName = dictValueName;
     }
@@ -56,5 +61,13 @@ public class DictValue {
 
     public void setDictKeyId(int dictKeyId) {
         this.dictKeyId = dictKeyId;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

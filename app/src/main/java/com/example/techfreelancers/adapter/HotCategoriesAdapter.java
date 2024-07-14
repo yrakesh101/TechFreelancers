@@ -9,15 +9,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
-import com.example.techfreelancers.models.HotCategory;
+import com.example.techfreelancers.api.model.DictValue;
 
 import java.util.List;
 
 public class HotCategoriesAdapter extends RecyclerView.Adapter<HotCategoriesAdapter.HotCategoryViewHolder> {
 
-    private List<HotCategory> hotCategories;
+    private List<DictValue> hotCategories;
+    private HotCategoriesAdapter.OnItemClickListener listener;
 
-    public HotCategoriesAdapter(List<HotCategory> hotCategories) {
+    private int selectedPosition = RecyclerView.NO_POSITION;
+
+    // Interface for item click events
+    public interface OnItemClickListener {
+        void onItemClick(DictValue category);
+    }
+
+    public HotCategoriesAdapter(List<DictValue> hotCategories) {
         this.hotCategories = hotCategories;
     }
 
@@ -30,13 +38,28 @@ public class HotCategoriesAdapter extends RecyclerView.Adapter<HotCategoriesAdap
 
     @Override
     public void onBindViewHolder(@NonNull HotCategoryViewHolder holder, int position) {
-        HotCategory hotCategory = hotCategories.get(position);
+        DictValue hotCategory = hotCategories.get(position);
         holder.bind(hotCategory);
+        holder.itemView.setBackgroundColor(selectedPosition == position ?
+                holder.itemView.getContext().getResources().getColor(android.R.color.holo_blue_light) :
+                holder.itemView.getContext().getResources().getColor(android.R.color.transparent));
+        holder.itemView.setOnClickListener(v -> {
+            notifyItemChanged(selectedPosition);
+            selectedPosition = holder.getAdapterPosition();
+            notifyItemChanged(selectedPosition);
+            if (listener != null) {
+                listener.onItemClick(hotCategory);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return hotCategories.size();
+    }
+
+    public void setOnItemClickListener(HotCategoriesAdapter.OnItemClickListener onItemClickListener) {
+        this.listener = onItemClickListener;
     }
 
     static class HotCategoryViewHolder extends RecyclerView.ViewHolder {
@@ -47,8 +70,8 @@ public class HotCategoriesAdapter extends RecyclerView.Adapter<HotCategoriesAdap
             nameView = itemView.findViewById(R.id.hot_category_name);
         }
 
-        void bind(HotCategory hotCategory) {
-            nameView.setText(hotCategory.getName());
+        void bind(DictValue hotCategory) {
+            nameView.setText(hotCategory.getDictValueName());
         }
     }
 }

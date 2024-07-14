@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="100dp"
+    android:layout_width="150dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/hot_category_background"
@@ -12,9 +12,9 @@
 
     <ImageView
         android:id="@+id/category_icon"
-        android:layout_width="80dp"
-        android:layout_height="45dp"
-        android:scaleType="fitCenter"
+        android:layout_width="160dp"
+        android:layout_height="90dp"
+        android:scaleType="fitXY"
         tools:src="@tools:sample/avatars" />
 
     <TextView
