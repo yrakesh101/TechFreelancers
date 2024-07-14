@@ -30,7 +30,7 @@
             android:layout_width="340dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Gig Detail         "
+            android:text="Gig Details        "
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30sp"
@@ -237,6 +237,8 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -249,7 +251,51 @@
                 android:text="This is the area where the details of the project is to be given"
                 android:padding="8dp" />
 
+
         </ScrollView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="37dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/upvoteButton"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/upbtn_bg"
+                android:text="Upvote"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/voteCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/downvoteButton"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/downbtn_bg"
+                android:text="Downvote"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+
     </LinearLayout>
 
     <!-- Accept Button -->
