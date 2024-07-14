@@ -26,6 +26,8 @@ public class LoadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
 
+        this.getSupportActionBar().hide();
+
         progressBar = findViewById(R.id.progressBar);
 
         // load loadingtime from config file
