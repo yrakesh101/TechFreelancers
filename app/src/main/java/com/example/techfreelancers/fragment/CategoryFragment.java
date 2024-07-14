@@ -1,6 +1,7 @@
 package com.example.techfreelancers.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
+import com.example.techfreelancers.activity.loginActivity;
 import com.example.techfreelancers.adapter.GridCategoriesAdapter;
 import com.example.techfreelancers.adapter.HotCategoriesAdapter;
 import com.example.techfreelancers.api.DictApi;
@@ -113,6 +115,9 @@ public class CategoryFragment extends Fragment {
                     try {
                         errorModel = converter.convert(response.errorBody());
                         Toast.makeText(getContext(), errorModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(401 == errorModel.getStatus()) {
+                            startActivity(new Intent(getContext(), loginActivity.class));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -162,6 +167,9 @@ public class CategoryFragment extends Fragment {
                     try {
                         errorModel = converter.convert(response.errorBody());
                         Toast.makeText(getContext(), errorModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(401 == errorModel.getStatus()) {
+                            startActivity(new Intent(getContext(), loginActivity.class));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

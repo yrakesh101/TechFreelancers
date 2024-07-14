@@ -1,6 +1,7 @@
 package com.example.techfreelancers.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.techfreelancers.activity.loginActivity;
 import com.example.techfreelancers.adapter.categoryAdapter;
 import com.example.techfreelancers.adapter.trendingGigsAdapter;
 import com.example.techfreelancers.api.ProjectApi;
@@ -87,6 +89,9 @@ public class SearchFragment extends Fragment {
                     try {
                         errorModel = converter.convert(response.errorBody());
                         Toast.makeText(getContext(), errorModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(401 == errorModel.getStatus()) {
+                            startActivity(new Intent(getContext(), loginActivity.class));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

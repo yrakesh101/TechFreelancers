@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
+import com.example.techfreelancers.activity.loginActivity;
 import com.example.techfreelancers.activity.mostVotedActivity;
 import com.example.techfreelancers.activity.profileActivity;
 
@@ -130,6 +131,9 @@ public class HomeFragment extends Fragment {
                     try {
                         errorModel = converter.convert(response.errorBody());
                         Toast.makeText(getContext(), errorModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(401 == errorModel.getStatus()) {
+                            startActivity(new Intent(getContext(), loginActivity.class));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -169,6 +173,9 @@ public class HomeFragment extends Fragment {
                     try {
                         errorModel = converter.convert(response.errorBody());
                         Toast.makeText(getContext(), errorModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(401 == errorModel.getStatus()) {
+                            startActivity(new Intent(getContext(), loginActivity.class));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
