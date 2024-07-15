@@ -129,6 +129,9 @@ public class searchActivity extends AppCompatActivity {
                     try {
                         errorModel = converter.convert(response.errorBody());
                         Toast.makeText(searchActivity.this, errorModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(401 == errorModel.getStatus()) {
+                            startActivity(new Intent(getApplicationContext(), loginActivity.class));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -168,6 +171,9 @@ public class searchActivity extends AppCompatActivity {
                     try {
                         errorModel = converter.convert(response.errorBody());
                         Toast.makeText(searchActivity.this, errorModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(401 == errorModel.getStatus()) {
+                            startActivity(new Intent(getApplicationContext(), loginActivity.class));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

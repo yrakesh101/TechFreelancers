@@ -1,6 +1,7 @@
 package com.example.techfreelancers.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -103,6 +104,9 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                     try {
                         errorModel = converter.convert(response.errorBody());
                         Toast.makeText(PaymentActivity.this, errorModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(401 == errorModel.getStatus()) {
+                            startActivity(new Intent(getApplicationContext(), loginActivity.class));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
