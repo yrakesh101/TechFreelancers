@@ -2,12 +2,12 @@ package com.example.techfreelancers.api.model;
 
 import java.math.BigDecimal;
 
-public class TechProject {
+public class TechProject extends BaseBean {
 
     /**
      * Project id
      */
-    private int projectId;
+    private Integer projectId;
 
     /**
      * Project title
@@ -34,11 +34,26 @@ public class TechProject {
      */
     private String projectDetail;
 
-    public int getProjectId() {
+    /**
+     * project vote
+     */
+    private Integer projectVote;
+
+    /**
+     * project publish user id
+     */
+    private Integer publishUserId;
+
+    /**
+     * the user id of whom accept the project
+     */
+    private Integer acceptUserId;
+
+    public Integer getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(int projectId) {
+    public void setProjectId(Integer projectId) {
         this.projectId = projectId;
     }
 
@@ -80,5 +95,39 @@ public class TechProject {
 
     public void setProjectDetail(String projectDetail) {
         this.projectDetail = projectDetail;
+    }
+
+    public Integer getProjectVote() {
+        return projectVote;
+    }
+
+    public void setProjectVote(Integer projectVote) {
+        this.projectVote = projectVote;
+    }
+
+    public Integer getPublishUserId() {
+        return publishUserId;
+    }
+
+    public void setPublishUserId(Integer publishUserId) {
+        this.publishUserId = publishUserId;
+    }
+
+    public Integer getAcceptUserId() {
+        return acceptUserId;
+    }
+
+    public void setAcceptUserId(Integer acceptUserId) {
+        this.acceptUserId = acceptUserId;
+    }
+
+    private String publishUserName;
+
+    public String getPublishUserName() {
+        return publishUserName;
+    }
+
+    public void setPublishUserName(String publishUserName) {
+        this.publishUserName = publishUserName;
     }
 }

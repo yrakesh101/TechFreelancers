@@ -7,44 +7,13 @@
     android:background="@color/main_background"
     tools:context=".activity.gigDetailsActivity">
 
-    <!-- Top Bar -->
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="448dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="20dp"
-            android:layout_height="52dp"
-            android:layout_weight="1"
-            android:src="@drawable/arrow" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="340dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Gig Details        "
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
     <!-- Profile Section -->
     <LinearLayout
         android:id="@+id/profileSection"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="31dp"
@@ -74,6 +43,12 @@
                 android:textStyle="italic" />
 
             <TextView
+                android:id="@+id/projectId"
+                android:visibility="invisible"
+                android:layout_height="0dp"
+                android:layout_width="0dp"/>
+
+            <TextView
                 android:id="@+id/usernames"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,6 +64,7 @@
         android:id="@+id/dateSection"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/profileSection"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/Title"
@@ -293,9 +269,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
-
-
-
     </LinearLayout>
 
     <!-- Accept Button -->
@@ -314,16 +287,5 @@
         android:layout_marginEnd="48dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/bottom_nav_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

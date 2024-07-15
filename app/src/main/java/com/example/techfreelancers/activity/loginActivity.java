@@ -1,9 +1,7 @@
 package com.example.techfreelancers.activity;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -115,7 +113,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                         // save user information
                         SessionManager.saveUserSession(loginActivity.this, responseData);
                         Toast.makeText(loginActivity.this, "Login successful: " + responseData.get("email"), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(loginActivity.this, searchActivity.class); // Replace SearchActivity.class with your actual search activity class
+                        Intent intent = new Intent(loginActivity.this, MainActivity.class); // Replace SearchActivity.class with your actual search activity class
                         startActivity(intent);//for navigation to search activity page
                         finish();
                     } else {

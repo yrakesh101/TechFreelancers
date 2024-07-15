@@ -23,6 +23,16 @@ import java.util.List;
 public class trendingGigsAdapter<Bitmap> extends RecyclerView.Adapter<trendingGigsAdapter.ViewHolder> {
 
     private List<TechProject> trendingGigsList;
+    private trendingGigsAdapter.OnItemClickListener listener;
+
+    // Interface for item click events
+    public interface OnItemClickListener {
+        void onItemClick(TechProject project);
+    }
+
+    public void setOnItemClickListener(trendingGigsAdapter.OnItemClickListener onItemClickListener) {
+        this.listener = onItemClickListener;
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView projectTitle;
@@ -59,14 +69,17 @@ public class trendingGigsAdapter<Bitmap> extends RecyclerView.Adapter<trendingGi
         holder.cost.setText(gig.getProjectCost().toString());
         holder.timeSpan.setText(gig.getTimeSpan());
         holder.descriptionDetails.setText(gig.getProjectDetail());
-        // Set profile picture if available
-//         holder.profilePic.setImageURI(https://cdn-icons-png.flaticon.com/128/3135/3135768.png);
-//        holder.profilePic.setImageBitmap(getBitmapFromURL("https://cdn-icons-png.flaticon.com/128/3135/3135768.png"));
+        String imageUrl = "https://picsum.photos/id/"+ gig.getPublishUserId() +"/200/200";
         Picasso.get()
-                .load("https://cdn-icons-png.flaticon.com/128/3135/3135768.png")
+                .load(imageUrl)
                 .placeholder(R.drawable.log) // Optional placeholder image
                 .error(R.drawable.error) // Optional error image
                 .into(holder.profilePic);
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(gig);
+            }
+        });
     }
 
     @Override

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,10 +19,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
+import com.example.techfreelancers.activity.gigDetailsActivity;
 import com.example.techfreelancers.activity.loginActivity;
 import com.example.techfreelancers.activity.mostVotedActivity;
-import com.example.techfreelancers.activity.profileActivity;
-
 import com.example.techfreelancers.adapter.categoryAdapter;
 import com.example.techfreelancers.adapter.trendingGigsAdapter;
 import com.example.techfreelancers.api.DictApi;
@@ -36,8 +34,6 @@ import com.example.techfreelancers.utils.RetrofitClient;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -121,6 +117,14 @@ public class HomeFragment extends Fragment {
                     if (responseModel.getSuccess() && responseModel.getStatus() == 200) {
                         List<TechProject> projects = (List<TechProject>) responseModel.getData();
                         adapter = new trendingGigsAdapter(projects);
+                        adapter.setOnItemClickListener(new trendingGigsAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(TechProject project) {
+                                Intent intent = new Intent(getContext(), gigDetailsActivity.class);
+                                intent.putExtra("projectId", project.getProjectId());
+                                startActivity(intent);
+                            }
+                        });
                         recyclerView.setAdapter(adapter);
                     } else {
                         Toast.makeText(getContext(), responseModel.getMessage(), Toast.LENGTH_SHORT).show();
