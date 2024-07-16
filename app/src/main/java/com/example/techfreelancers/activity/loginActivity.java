@@ -82,7 +82,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                 return;
             }
         } else {
-            // temp default email
+            // temp default email address
             email = "hello@gmail.com";
 //            Toast.makeText(loginActivity.this, "Email cannot be null.", Toast.LENGTH_SHORT).show();
 //            return;

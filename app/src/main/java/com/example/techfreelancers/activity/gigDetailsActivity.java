@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +52,13 @@ public class gigDetailsActivity extends AppCompatActivity implements View.OnClic
             TextView title = actionBar.getCustomView().findViewById(R.id.action_bar_title);
             title.setText("Gig Details");
         }
+        ImageView backArrow=findViewById(R.id.backArrow);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+            });
 
         init();
     }
