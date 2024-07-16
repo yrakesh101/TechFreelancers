@@ -9,16 +9,35 @@
 
     <!-- Profile Section -->
     <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="385dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="63dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/arrow" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/profileSection"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="31dp"
         android:layout_marginStart="41dp"
-        android:layout_marginEnd="41dp">
+        android:layout_marginEnd="41dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <ImageView
             android:id="@+id/profilePic"
@@ -32,8 +51,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="16dp">
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/postedBy"
@@ -44,9 +63,9 @@
 
             <TextView
                 android:id="@+id/projectId"
-                android:visibility="invisible"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_width="0dp"/>
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/usernames"
