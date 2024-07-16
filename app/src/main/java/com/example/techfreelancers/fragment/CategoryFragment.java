@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
 import com.example.techfreelancers.activity.loginActivity;
+import com.example.techfreelancers.activity.searchResultActivity;
 import com.example.techfreelancers.adapter.GridCategoriesAdapter;
 import com.example.techfreelancers.adapter.HotCategoriesAdapter;
 import com.example.techfreelancers.api.DictApi;
@@ -40,7 +41,7 @@ import retrofit2.Converter;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class CategoryFragment extends Fragment {
+public class CategoryFragment extends Fragment implements View.OnClickListener {
 
     private FragmentCategoryBinding categoryBinding;
 
@@ -74,10 +75,18 @@ public class CategoryFragment extends Fragment {
     }
 
     private void init() {
+        categoryBinding.searchButton.setOnClickListener(this);
         // get recommend project data from server to render on UI
         fetchHotCategories();
         // get category data from server to render on UI
         fetchNavCategories(2);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == categoryBinding.searchButton) {
+            startActivity(new Intent(getContext(), searchResultActivity.class));
+        }
     }
 
     private void fetchHotCategories() {

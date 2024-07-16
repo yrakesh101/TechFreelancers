@@ -26,7 +26,7 @@ public class LoadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
 
-        this.getSupportActionBar().hide();
+//        this.getSupportActionBar().hide();
 
         progressBar = findViewById(R.id.progressBar);
 
