@@ -2,20 +2,13 @@ package com.example.techfreelancers.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import com.example.techfreelancers.R;
 import com.example.techfreelancers.api.PaymentApi;
 import com.example.techfreelancers.api.ProjectApi;
 import com.example.techfreelancers.api.ResponseModel;
@@ -52,35 +45,12 @@ public class postGigActivity extends AppCompatActivity implements View.OnClickLi
         postGigBinding = ActivityPostGigBinding.inflate(getLayoutInflater());
         setContentView(postGigBinding.getRoot());
 
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar != null) {
-//            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-//            actionBar.setCustomView(R.layout.custom_action_bar);
-//            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF3700B3"))); // Set your color here
-//            TextView title = actionBar.getCustomView().findViewById(R.id.action_bar_title);
-//            title.setText("Post Gig");
-//        }
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(postGigBinding.toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
-            // Disable the default title
-//            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-//            actionBar.setCustomView(R.layout.custom_action_bar);
-//            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF3700B3"))); // Set your color here
-//            TextView title = actionBar.getCustomView().findViewById(R.id.action_bar_title);
-//            title.setText("Post Gig");
-
-            // Inflate the custom view
-            LayoutInflater inflater = LayoutInflater.from(this);
-            View customView = inflater.inflate(R.layout.custom_action_bar, null);
-            // Set the custom view
-            actionBar.setCustomView(customView);
-            actionBar.setDisplayShowCustomEnabled(true);
         }
 
         init();
@@ -88,7 +58,7 @@ public class postGigActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public boolean onSupportNavigateUp() {
-        onBackPressed(); // Handle the back button press
+        finish(); // Handle the back button press
         return true;
     }
 

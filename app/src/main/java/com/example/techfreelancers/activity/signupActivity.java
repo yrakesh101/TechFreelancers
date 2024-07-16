@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.techfreelancers.api.ResponseModel;
@@ -34,8 +35,21 @@ public class signupActivity extends AppCompatActivity {
         signUpBinding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(signUpBinding.getRoot());
 
-        setVariable();
+        setSupportActionBar(signUpBinding.toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
 
+        setVariable();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // Handle the back button press
+        return true;
     }
 
 

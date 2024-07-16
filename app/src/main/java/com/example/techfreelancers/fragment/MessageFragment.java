@@ -1,17 +1,11 @@
 package com.example.techfreelancers.fragment;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,19 +29,6 @@ public class MessageFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         messageBinding = FragmentMessageBinding.inflate(inflater, container, false);
         View root = messageBinding.getRoot();
-
-        // Customize ActionBar (Toolbar)
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        if (activity != null) {
-            ActionBar actionBar = activity.getSupportActionBar();
-            if (actionBar != null) {
-                actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-                actionBar.setCustomView(R.layout.custom_action_bar); // Set custom layout
-                actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF3700B3"))); // Set background color
-                TextView title = actionBar.getCustomView().findViewById(R.id.action_bar_title);
-                title.setText("Message"); // Set custom title
-            }
-        }
 
         // Initialize RecyclerView and adapter
         initRecyclerView();

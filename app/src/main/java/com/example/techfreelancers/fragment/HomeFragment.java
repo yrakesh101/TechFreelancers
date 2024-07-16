@@ -2,8 +2,6 @@ package com.example.techfreelancers.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,32 +42,20 @@ import retrofit2.Retrofit;
 
 public class HomeFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentHomeBinding homeBinding;
     private RecyclerView recyclerView;
     private trendingGigsAdapter adapter;
     private RecyclerView categoryRecyclerView;
     private categoryAdapter categoryAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        homeBinding = FragmentHomeBinding.inflate(inflater, container, false);
+        View root = homeBinding.getRoot();
 
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        if (activity != null) {
-            ActionBar actionBar = activity.getSupportActionBar();
-            if (actionBar != null) {
-                actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-                actionBar.setCustomView(R.layout.custom_action_bar);
-                actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF3700B3"))); // Set your color here
-                TextView title = actionBar.getCustomView().findViewById(R.id.action_bar_title);
-                title.setText("Home");
-            }
-        }
-
-        recyclerView = binding.trendingsPostsView;
+        recyclerView = homeBinding.trendingsPostsView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        categoryRecyclerView = binding.categoryView;
+        categoryRecyclerView = homeBinding.categoryView;
         categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         TextView mostVotedTV = root.findViewById(R.id.mostVotedTV);
@@ -199,6 +183,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
+        homeBinding = null;
     }
 }

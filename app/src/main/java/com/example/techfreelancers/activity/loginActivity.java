@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.techfreelancers.api.ResponseModel;
@@ -37,9 +38,14 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        this.getSupportActionBar().hide();
         loginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(loginBinding.getRoot());
+
+        setSupportActionBar(loginBinding.toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
 
         init();
     }
@@ -75,11 +81,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         String email = loginBinding.emailEditText.getText().toString().trim();
         String password = loginBinding.passwordEditText.getText().toString().trim();
         if (!"".equals(email) && email.length() > 0) {
-            if ("pay".equals(email)) {
-                Intent intent = new Intent(loginActivity.this, PaymentActivity.class);
-                startActivity(intent);
-                return;
-            }
+
         } else {
             // temp default email address
             email = "hello@gmail.com";

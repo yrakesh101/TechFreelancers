@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -15,13 +14,7 @@
         android:theme="@style/Theme.TechFreelancers"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.gigDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.postGigActivity"
+            android:name=".activity.LoadingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,29 +22,23 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.gigDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.postGigActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.mostVotedActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LoadingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.PaymentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.messagesActivity"
             android:exported="false" />
         <activity
             android:name=".activity.editProfileActivity"
             android:parentActivityName=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.profileActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.searchResultActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.searchActivity"
             android:exported="false" />
         <activity
             android:name=".activity.loginActivity"

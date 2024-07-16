@@ -2,12 +2,8 @@ package com.example.techfreelancers.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -45,23 +41,21 @@ public class gigDetailsActivity extends AppCompatActivity implements View.OnClic
         gigDetailsBinding = ActivityGigDetailsBinding.inflate(getLayoutInflater());
         setContentView(gigDetailsBinding.getRoot());
 
+        setSupportActionBar(gigDetailsBinding.toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            actionBar.setCustomView(R.layout.custom_action_bar);
-            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF3700B3"))); // Set your color here
-            TextView title = actionBar.getCustomView().findViewById(R.id.action_bar_title);
-            title.setText("Gig Details");
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
         }
-        ImageView backArrow=findViewById(R.id.backArrow);
-        backArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-            });
 
         init();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // Handle the back button press
+        return true;
     }
 
     private void init() {
