@@ -38,6 +38,7 @@ public class mostVotedAdapter extends RecyclerView.Adapter<mostVotedAdapter.View
             descriptionDetails = view.findViewById(R.id.descriptionDetails);
             profilePic = view.findViewById(R.id.profilePic);
         }
+
     }
 
     public mostVotedAdapter(List<TechProject> mostVotedGigsList) {

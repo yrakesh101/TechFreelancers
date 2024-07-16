@@ -41,27 +41,13 @@ public class mostVotedActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.mostVotedRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Uncomment and correct the navigation setup if needed
-        // BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        // bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-        //     @Override
-        //     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        //         if (item.getItemId() == R.id.nav_messages) {
-        //             startActivity(new Intent(mostVotedActivity.this, MessagesActivity.class));
-        //             return true;
-        //         } else if (item.getItemId() == R.id.nav_home) {
-        //             startActivity(new Intent(mostVotedActivity.this, HomeActivity.class));
-        //             return true;
-        //         } else if (item.getItemId() == R.id.nav_search) {
-        //             startActivity(new Intent(mostVotedActivity.this, mostVotedActivity.class));
-        //             return true;
-        //         } else if (item.getItemId() == R.id.nav_settings) {
-        //             startActivity(new Intent(mostVotedActivity.this, SettingActivity.class));
-        //             return true;
-        //         }
-        //         return false;
-        //     }
-        // });
+        ImageView backArrow = findViewById(R.id.backArrow);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+            });
 
         init();
     }
