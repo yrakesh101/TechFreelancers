@@ -48,6 +48,7 @@ public class trendingGigsAdapter<Bitmap> extends RecyclerView.Adapter<trendingGi
             timeSpan = view.findViewById(R.id.timeSpan);
             descriptionDetails = view.findViewById(R.id.descriptionDetails);
             profilePic = view.findViewById(R.id.profilePic);
+
         }
     }
 
