@@ -21,6 +21,7 @@ import com.example.techfreelancers.api.ResponseModel;
 import com.example.techfreelancers.api.model.TechProject;
 import com.example.techfreelancers.databinding.FragmentSearchBinding;
 import com.example.techfreelancers.utils.RetrofitClient;
+import com.example.techfreelancers.utils.SessionManager;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -90,6 +91,7 @@ public class SearchFragment extends Fragment {
                         errorModel = converter.convert(response.errorBody());
                         Toast.makeText(getContext(), errorModel.getMessage(), Toast.LENGTH_SHORT).show();
                         if(401 == errorModel.getStatus()) {
+                            SessionManager.clearUserSession(getContext());
                             startActivity(new Intent(getContext(), loginActivity.class));
                         }
                     } catch (IOException e) {

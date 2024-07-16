@@ -20,6 +20,7 @@ import com.example.techfreelancers.api.ResponseModel;
 import com.example.techfreelancers.api.model.TechProject;
 import com.example.techfreelancers.databinding.ActivityPostGigBinding;
 import com.example.techfreelancers.utils.RetrofitClient;
+import com.example.techfreelancers.utils.SessionManager;
 import com.stripe.android.PaymentConfiguration;
 import com.stripe.android.paymentsheet.PaymentSheet;
 import com.stripe.android.paymentsheet.PaymentSheetResult;
@@ -147,6 +148,7 @@ public class postGigActivity extends AppCompatActivity implements View.OnClickLi
                         errorModel = converter.convert(response.errorBody());
                         Toast.makeText(postGigActivity.this, errorModel.getMessage(), Toast.LENGTH_SHORT).show();
                         if(401 == errorModel.getStatus()) {
+                            SessionManager.clearUserSession(getApplicationContext());
                             startActivity(new Intent(getApplicationContext(), loginActivity.class));
                         }
                     } catch (IOException e) {
@@ -195,6 +197,7 @@ public class postGigActivity extends AppCompatActivity implements View.OnClickLi
                         errorModel = converter.convert(response.errorBody());
                         Toast.makeText(postGigActivity.this, errorModel.getMessage(), Toast.LENGTH_SHORT).show();
                         if(401 == errorModel.getStatus()) {
+                            SessionManager.clearUserSession(getApplicationContext());
                             startActivity(new Intent(getApplicationContext(), loginActivity.class));
                         }
                     } catch (IOException e) {

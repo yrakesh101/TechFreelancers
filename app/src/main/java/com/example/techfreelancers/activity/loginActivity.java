@@ -54,7 +54,6 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     private void checkLoginStatus() {
         SharedPreferences sharedPreferences = getSharedPreferences("LOGIN_USER_INFO", Context.MODE_PRIVATE);
         if(sharedPreferences.getBoolean("IS_LOGIN", false)) {
-            Toast.makeText(this, "Already login, go to search.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(loginActivity.this, MainActivity.class); // Replace SearchActivity.class with your actual search activity class
             startActivity(intent);//for navigation to search activity page
             finish();
