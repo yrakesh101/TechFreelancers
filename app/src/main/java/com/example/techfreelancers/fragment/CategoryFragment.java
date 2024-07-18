@@ -42,6 +42,8 @@ public class CategoryFragment extends Fragment implements View.OnClickListener {
     RecyclerView hotCategoriesRecyclerView;
     RecyclerView categoriesGridRecyclerView;
 
+    private Integer defaultCategoryId = 2;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         categoryBinding = FragmentCategoryBinding.inflate(inflater, container, false);
         View root = categoryBinding.getRoot();
@@ -67,7 +69,12 @@ public class CategoryFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(v == categoryBinding.searchButton) {
-            startActivity(new Intent(getContext(), searchResultActivity.class));
+            Intent intent = new Intent(getContext(), searchResultActivity.class);
+            String searchText = categoryBinding.searchBar.getText().toString().trim();
+            if (!"".equals(searchText) && searchText.length() > 0) {
+                intent.putExtra("SEARCHTEXT", searchText);
+            }
+            startActivity(intent);
         }
     }
 
@@ -94,6 +101,7 @@ public class CategoryFragment extends Fragment implements View.OnClickListener {
                             public void onItemClick(DictValue category) {
                                 Toast.makeText(getContext(), "Clicked: " + category.getNote(), Toast.LENGTH_SHORT).show();
                                 Integer categoryId = Integer.valueOf(category.getNote());
+                                defaultCategoryId = categoryId;
                                 fetchNavCategories(categoryId);
                             }
                         });
@@ -147,7 +155,9 @@ public class CategoryFragment extends Fragment implements View.OnClickListener {
                         adapter.setOnItemClickListener(new GridCategoriesAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(DictValue rightCategory) {
-                                Toast.makeText(getContext(), "Clicked: " + rightCategory.getDictValueName(), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getContext(), searchResultActivity.class);
+                                intent.putExtra("CATEGORYID", defaultCategoryId);
+                                startActivity(intent);
                             }
                         });
                         categoriesGridRecyclerView.setAdapter(adapter);

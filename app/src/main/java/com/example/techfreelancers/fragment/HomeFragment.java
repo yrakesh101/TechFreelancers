@@ -18,6 +18,7 @@ import com.example.techfreelancers.R;
 import com.example.techfreelancers.activity.gigDetailsActivity;
 import com.example.techfreelancers.activity.loginActivity;
 import com.example.techfreelancers.activity.mostVotedActivity;
+import com.example.techfreelancers.activity.searchResultActivity;
 import com.example.techfreelancers.adapter.categoryAdapter;
 import com.example.techfreelancers.adapter.trendingGigsAdapter;
 import com.example.techfreelancers.api.DictApi;
@@ -153,6 +154,14 @@ public class HomeFragment extends Fragment {
                     if (responseModel.getSuccess() && responseModel.getStatus() == 200) {
                         List<DictValue> categories = (List<DictValue>) responseModel.getData();
                         categoryAdapter = new categoryAdapter(categories);
+                        categoryAdapter.setOnItemClickListener(new categoryAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(DictValue dictValue) {
+                                Intent intent = new Intent(getContext(), searchResultActivity.class);
+                                intent.putExtra("CATEGORYID", dictValue.getDictValueId());
+                                startActivity(intent);
+                            }
+                        });
                         categoryRecyclerView.setAdapter(categoryAdapter);
                     } else {
                         Toast.makeText(getContext(), responseModel.getMessage(), Toast.LENGTH_SHORT).show();

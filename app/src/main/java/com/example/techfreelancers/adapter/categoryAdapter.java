@@ -16,6 +16,16 @@ import java.util.List;
 public class categoryAdapter extends RecyclerView.Adapter<categoryAdapter.ViewHolder> {
 
     private List<DictValue> categoryList;
+    private categoryAdapter.OnItemClickListener listener;
+
+    // Interface for item click events
+    public interface OnItemClickListener {
+        void onItemClick(DictValue dictValue);
+    }
+
+    public void setOnItemClickListener(categoryAdapter.OnItemClickListener onItemClickListener) {
+        this.listener = onItemClickListener;
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView categoryName;
@@ -41,6 +51,11 @@ public class categoryAdapter extends RecyclerView.Adapter<categoryAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         DictValue category = categoryList.get(position);
         holder.categoryName.setText(category.getDictValueName());
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(category);
+            }
+        });
     }
 
     @Override

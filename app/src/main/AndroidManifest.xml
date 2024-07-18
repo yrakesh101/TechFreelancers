@@ -35,7 +35,6 @@
             android:exported="false" />
         <activity
             android:name=".activity.editProfileActivity"
-            android:parentActivityName=".activity.MainActivity"
             android:exported="false" />
         <activity
             android:name=".activity.searchResultActivity"
