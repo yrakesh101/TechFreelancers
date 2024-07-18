@@ -20,6 +20,13 @@ public interface ProjectApi {
     Call<ResponseModel<List<TechProject>>> queryRecommendProject();
 
     /**
+     * Query recommend projects
+     * @return
+     */
+    @GET("/tech/project/mostvote")
+    Call<ResponseModel<List<TechProject>>> queryMostvotedProject();
+
+    /**
      *
      * @param techProject
      * @return

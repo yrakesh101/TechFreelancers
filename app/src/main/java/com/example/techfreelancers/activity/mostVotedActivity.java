@@ -62,21 +62,21 @@ public class mostVotedActivity extends AppCompatActivity {
     }
 
     private void init() {
-        // show progress dialog
-        ProgressDialog progressDialog = new ProgressDialog(mostVotedActivity.this, 1);
-        progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
         // get recommend project data from server to render on UI
-        fetchRecommendProjects(progressDialog);
+        fetchRecommendProjects();
     }
 
     /**
      * get recommend project data from server to render on UI
      */
-    private void fetchRecommendProjects(ProgressDialog progressDialog) {
+    private void fetchRecommendProjects() {
+        // show progress dialog
+        ProgressDialog progressDialog = new ProgressDialog(mostVotedActivity.this, 1);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         Retrofit retrofit = RetrofitClient.getInstance(this);
-        Call<ResponseModel<List<TechProject>>> call = retrofit.create(ProjectApi.class).queryRecommendProject();
+        Call<ResponseModel<List<TechProject>>> call = retrofit.create(ProjectApi.class).queryMostvotedProject();
         call.enqueue(new Callback<ResponseModel<List<TechProject>>>() {
             @Override
             public void onResponse(Call<ResponseModel<List<TechProject>>> call, Response<ResponseModel<List<TechProject>>> response) {
@@ -86,6 +86,17 @@ public class mostVotedActivity extends AppCompatActivity {
                     if (responseModel.getSuccess() && responseModel.getStatus() == 200) {
                         List<TechProject> projects = (List<TechProject>) responseModel.getData();
                         adapter = new mostVotedAdapter(projects);
+                        adapter.setOnItemClickListener(new mostVotedAdapter.OnItemClickListener() {
+                            @Override
+                            public void onUpvoteClick(TechProject project) {
+                                voteProject(project.getProjectId(), 1);
+                            }
+
+                            @Override
+                            public void onDownvoteClick(TechProject project) {
+                                voteProject(project.getProjectId(), -1);
+                            }
+                        });
                         recyclerView.setAdapter(adapter);
                     } else {
                         Toast.makeText(mostVotedActivity.this, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
@@ -108,6 +119,63 @@ public class mostVotedActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseModel<List<TechProject>>> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(mostVotedActivity.this, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    /**
+     * vote project
+     *
+     * @return
+     */
+    private void voteProject(Integer projectId, Integer voteType) {
+        if (projectId != null) {
+
+        } else {
+            Toast.makeText(this, "Project id cannot be null.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // show progress dialog
+        ProgressDialog progressDialog = new ProgressDialog(this, 1);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        Retrofit retrofit = RetrofitClient.getInstance(this);
+        Call<ResponseModel> call = retrofit.create(ProjectApi.class).voteProject(projectId, voteType);
+        call.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                // dissmiss the progress dialog
+                progressDialog.dismiss();
+                if (response.isSuccessful() && response.body() != null) {
+                    ResponseModel responseModel = response.body();
+                    if (responseModel.getSuccess() && responseModel.getStatus() == 200) {
+                        Toast.makeText(mostVotedActivity.this , "Vote project success.", Toast.LENGTH_SHORT).show();
+                        fetchRecommendProjects();
+                    } else {
+                        Toast.makeText(mostVotedActivity.this, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Converter<ResponseBody, ResponseModel> converter = retrofit.responseBodyConverter(ResponseModel.class, new Annotation[0]);
+                    ResponseModel errorModel = null;
+                    try {
+                        errorModel = converter.convert(response.errorBody());
+                        Toast.makeText(mostVotedActivity.this, errorModel.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(401 == errorModel.getStatus()) {
+                            SessionManager.clearUserSession(getApplicationContext());
+                            startActivity(new Intent(mostVotedActivity.this, loginActivity.class));
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                // dissmiss the progress dialog
                 progressDialog.dismiss();
                 Toast.makeText(mostVotedActivity.this, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
