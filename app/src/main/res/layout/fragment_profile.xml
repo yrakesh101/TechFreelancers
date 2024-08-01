@@ -77,32 +77,22 @@
 
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/deleteAccountBTN"
+                    android:id="@+id/postProjectButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="5dp"
                     android:background="@drawable/setting_btn_bg"
-                    android:text="Delete Account"
+                    android:text="Post Projects"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/helpTV"
+                    android:id="@+id/acceptProjectButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_margin="5dp"
                     android:background="@drawable/setting_btn_bg"
-                    android:text="Help"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/aboutTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
-                    android:background="@drawable/setting_btn_bg"
-                    android:text="About"
+                    android:text="Accept Projects"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -110,9 +100,19 @@
                     android:id="@+id/logOutButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
+                    android:layout_margin="5dp"
                     android:background="@drawable/setting_btn_bg"
                     android:text="Log Out"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/aboutButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/setting_btn_bg"
+                    android:text="About"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 

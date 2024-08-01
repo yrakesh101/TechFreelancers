@@ -8,9 +8,13 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,7 +23,8 @@ import com.example.techfreelancers.adapter.SearchResultAdapter;
 import com.example.techfreelancers.api.ProjectApi;
 import com.example.techfreelancers.api.ResponseModel;
 import com.example.techfreelancers.api.model.TechProject;
-import com.example.techfreelancers.databinding.ActivitySearchResultBinding;
+import com.example.techfreelancers.databinding.ActivityAcceptedBinding;
+import com.example.techfreelancers.databinding.ActivityPostedBinding;
 import com.example.techfreelancers.utils.RetrofitClient;
 import com.example.techfreelancers.utils.SessionManager;
 
@@ -34,10 +39,9 @@ import retrofit2.Converter;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+public class AcceptedActivity extends AppCompatActivity {
 
-public class searchResultActivity extends AppCompatActivity {
-
-    private ActivitySearchResultBinding searchResultBinding;
+    ActivityAcceptedBinding acceptedBinding;
     private RecyclerView recyclerView;
     private SearchResultAdapter adapter;
 
@@ -45,19 +49,19 @@ public class searchResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        searchResultBinding = ActivitySearchResultBinding.inflate(getLayoutInflater());
-        setContentView(searchResultBinding.getRoot());
+        acceptedBinding = ActivityAcceptedBinding.inflate(getLayoutInflater());
+        setContentView(acceptedBinding.getRoot());
 
-        recyclerView = searchResultBinding.mostVotedRecyclerView;
+        recyclerView = acceptedBinding.mostVotedRecyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        setSupportActionBar(searchResultBinding.toolbar);
+        setSupportActionBar(acceptedBinding.toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
-            Drawable navIcon = searchResultBinding.toolbar.getNavigationIcon();
+            Drawable navIcon = acceptedBinding.toolbar.getNavigationIcon();
             if (navIcon != null) {
                 @ColorInt int color = getResources().getColor(R.color.white);
                 navIcon.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));

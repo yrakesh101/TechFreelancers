@@ -20,6 +20,20 @@ public interface ProjectApi {
     Call<ResponseModel<List<TechProject>>> queryRecommendProject();
 
     /**
+     * Query my posted projects
+     * @return
+     */
+    @GET("/tech/project/myposted")
+    Call<ResponseModel<List<TechProject>>> queryMyPostedProject();
+
+    /**
+     * Query my accept projects
+     * @return
+     */
+    @GET("/tech/project/myaccepted")
+    Call<ResponseModel<List<TechProject>>> queryMyAcceptedProject();
+
+    /**
      * Query recommend projects
      * @return
      */

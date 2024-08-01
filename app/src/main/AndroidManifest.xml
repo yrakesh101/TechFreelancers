@@ -14,10 +14,17 @@
         android:theme="@style/Theme.TechFreelancers"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.AcceptedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PostedActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.LoadingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
