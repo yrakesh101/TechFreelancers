@@ -82,7 +82,7 @@ public class AcceptedActivity extends AppCompatActivity {
      */
     private void fetchSearchProjects() {
         Retrofit retrofit = RetrofitClient.getInstance(getApplicationContext());
-        Call<ResponseModel<List<TechProject>>> call = retrofit.create(ProjectApi.class).queryRecommendProject();
+        Call<ResponseModel<List<TechProject>>> call = retrofit.create(ProjectApi.class).queryMyAcceptedProject();
         call.enqueue(new Callback<ResponseModel<List<TechProject>>>() {
             @Override
             public void onResponse(Call<ResponseModel<List<TechProject>>> call, Response<ResponseModel<List<TechProject>>> response) {
