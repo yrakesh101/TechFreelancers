@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class PostedAdapter<Bitmap> extends RecyclerView.Adapter<PostedAdapter.ViewHolder> {
+public class PostedAdapter extends RecyclerView.Adapter<PostedAdapter.ViewHolder> {
 
     private List<TechProject> trendingGigsList;
     private PostedAdapter.OnItemClickListener listener;
@@ -32,6 +32,8 @@ public class PostedAdapter<Bitmap> extends RecyclerView.Adapter<PostedAdapter.Vi
         public TextView projectTitle;
         public TextView cost;
         public TextView timeSpan;
+        public TextView projectStatue;
+        public TextView projectStatueStr;
         public TextView descriptionDetails;
         public ImageView profilePic;
 
@@ -40,6 +42,8 @@ public class PostedAdapter<Bitmap> extends RecyclerView.Adapter<PostedAdapter.Vi
             projectTitle = view.findViewById(R.id.projectTitle);
             cost = view.findViewById(R.id.cost);
             timeSpan = view.findViewById(R.id.timeSpan);
+            projectStatue = view.findViewById(R.id.projectStatue);
+            projectStatueStr = view.findViewById(R.id.projectStatueStr);
             descriptionDetails = view.findViewById(R.id.descriptionDetails);
             profilePic = view.findViewById(R.id.profilePic);
 
@@ -63,6 +67,37 @@ public class PostedAdapter<Bitmap> extends RecyclerView.Adapter<PostedAdapter.Vi
         holder.projectTitle.setText(gig.getProjectTitle());
         holder.cost.setText(gig.getProjectCost().toString());
         holder.timeSpan.setText(gig.getTimeSpan());
+        holder.projectStatue.setText(gig.getStatus());
+        switch (gig.getStatus()) {
+            case "0":
+                holder.projectStatueStr.setText("Draft");
+                break;
+
+            case "1":
+                holder.projectStatueStr.setText("Published");
+                break;
+
+            case "2":
+                holder.projectStatueStr.setText("Accepted");
+                break;
+
+            case "3":
+                holder.projectStatueStr.setText("Submitted");
+                break;
+
+            case "4":
+                holder.projectStatueStr.setText("Checked");
+                break;
+
+            case "5":
+                holder.projectStatueStr.setText("Finished");
+                break;
+
+            default:
+                holder.projectStatueStr.setText("");
+                break;
+        }
+
         holder.descriptionDetails.setText(gig.getProjectDetail());
         String imageUrl = "https://picsum.photos/id/"+ gig.getPublishUserId() +"/200/200";
         Picasso.get()

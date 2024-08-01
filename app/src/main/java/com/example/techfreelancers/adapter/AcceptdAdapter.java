@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AcceptdAdapter<Bitmap> extends RecyclerView.Adapter<AcceptdAdapter.ViewHolder> {
+public class AcceptdAdapter extends RecyclerView.Adapter<AcceptdAdapter.ViewHolder> {
 
     private List<TechProject> trendingGigsList;
     private AcceptdAdapter.OnItemClickListener listener;
@@ -32,6 +32,8 @@ public class AcceptdAdapter<Bitmap> extends RecyclerView.Adapter<AcceptdAdapter.
         public TextView projectTitle;
         public TextView cost;
         public TextView timeSpan;
+        public TextView projectStatue;
+        public TextView projectStatueStr;
         public TextView descriptionDetails;
         public ImageView profilePic;
 
@@ -40,6 +42,8 @@ public class AcceptdAdapter<Bitmap> extends RecyclerView.Adapter<AcceptdAdapter.
             projectTitle = view.findViewById(R.id.projectTitle);
             cost = view.findViewById(R.id.cost);
             timeSpan = view.findViewById(R.id.timeSpan);
+            projectStatue = view.findViewById(R.id.projectStatue);
+            projectStatueStr = view.findViewById(R.id.projectStatueStr);
             descriptionDetails = view.findViewById(R.id.descriptionDetails);
             profilePic = view.findViewById(R.id.profilePic);
 
@@ -54,15 +58,46 @@ public class AcceptdAdapter<Bitmap> extends RecyclerView.Adapter<AcceptdAdapter.
     public AcceptdAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.viewholder_list, parent, false);
-        return new ViewHolder(view);
+        return new AcceptdAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(AcceptdAdapter.ViewHolder holder, int position) {
         TechProject gig = trendingGigsList.get(position);
         holder.projectTitle.setText(gig.getProjectTitle());
         holder.cost.setText(gig.getProjectCost().toString());
         holder.timeSpan.setText(gig.getTimeSpan());
+        holder.projectStatue.setText(gig.getStatus());
+        switch (gig.getStatus()) {
+            case "0":
+                holder.projectStatueStr.setText("Draft");
+                break;
+
+            case "1":
+                holder.projectStatueStr.setText("Published");
+                break;
+
+            case "2":
+                holder.projectStatueStr.setText("Accepted");
+                break;
+
+            case "3":
+                holder.projectStatueStr.setText("Submitted");
+                break;
+
+            case "4":
+                holder.projectStatueStr.setText("Checked");
+                break;
+
+            case "5":
+                holder.projectStatueStr.setText("Finished");
+                break;
+
+            default:
+                holder.projectStatueStr.setText("");
+                break;
+        }
+
         holder.descriptionDetails.setText(gig.getProjectDetail());
         String imageUrl = "https://picsum.photos/id/"+ gig.getPublishUserId() +"/200/200";
         Picasso.get()

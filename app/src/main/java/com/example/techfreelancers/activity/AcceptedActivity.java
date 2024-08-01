@@ -94,9 +94,16 @@ public class AcceptedActivity extends AppCompatActivity {
                         adapter.setOnItemClickListener(new AcceptdAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(TechProject project) {
-                                Intent intent = new Intent(getApplicationContext(), RatePublisherActivity.class);
-                                intent.putExtra("projectId", project.getProjectId());
-                                startActivity(intent);
+                                Toast.makeText(getApplicationContext(), "project status: " + project.getStatus(), Toast.LENGTH_SHORT).show();
+                                if("2".equals(project.getStatus())) {
+                                    Intent intent = new Intent(getApplicationContext(), SubmitfinishActivity.class);
+                                    intent.putExtra("projectId", project.getProjectId());
+                                    startActivity(intent);
+                                } else if("5".equals(project.getStatus())) {
+                                    Intent intent = new Intent(getApplicationContext(), RatePublisherActivity.class);
+                                    intent.putExtra("projectId", project.getProjectId());
+                                    startActivity(intent);
+                                }
                             }
                         });
                         recyclerView.setAdapter(adapter);
@@ -124,6 +131,13 @@ public class AcceptedActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        init();
+        Toast.makeText(getApplicationContext(), "page resume", Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -41,4 +41,10 @@ public class RatePublisherActivity extends AppCompatActivity {
     private void init() {
 
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // Handle the back button press
+        return true;
+    }
 }

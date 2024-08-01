@@ -22,7 +22,7 @@
                 android:id="@+id/action_bar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gig Detail"
+                android:text="Rate Accepter"
                 android:textSize="28sp"
                 android:layout_gravity="center"
                 android:textColor="@android:color/white"

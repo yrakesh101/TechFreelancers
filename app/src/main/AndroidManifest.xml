@@ -14,7 +14,16 @@
         android:theme="@style/Theme.TechFreelancers"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.CheckfinishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SubmitfinishActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.RateAccepterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RatePublisherActivity"
             android:exported="false" />
         <activity
             android:name=".activity.AcceptedActivity"

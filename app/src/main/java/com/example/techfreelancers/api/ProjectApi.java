@@ -65,6 +65,22 @@ public interface ProjectApi {
     Call<ResponseModel> acceptProject(@Query("projectId") Integer projectId);
 
     /**
+     * submit project
+     * @param projectId
+     * @return
+     */
+    @GET("/tech/project/submit")
+    Call<ResponseModel> submitProject(@Query("projectId") Integer projectId);
+
+    /**
+     * check project
+     * @param projectId
+     * @return
+     */
+    @GET("/tech/project/check")
+    Call<ResponseModel> checkProject(@Query("projectId") Integer projectId);
+
+    /**
      * accept project
      * @param projectId
      * @return
