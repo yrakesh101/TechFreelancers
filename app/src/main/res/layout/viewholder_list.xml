@@ -38,6 +38,18 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/projectStatue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Statue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAlignment="viewEnd"
+            android:layout_gravity="center_vertical"
+            android:paddingRight="15dp"
+            tools:ignore="RtlCompat" />
     </LinearLayout>
 
     <!-- Title and Icons Section -->

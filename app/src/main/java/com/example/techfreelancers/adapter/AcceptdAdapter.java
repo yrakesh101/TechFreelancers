@@ -14,17 +14,17 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class trendingGigsAdapter<Bitmap> extends RecyclerView.Adapter<trendingGigsAdapter.ViewHolder> {
+public class AcceptdAdapter<Bitmap> extends RecyclerView.Adapter<AcceptdAdapter.ViewHolder> {
 
     private List<TechProject> trendingGigsList;
-    private trendingGigsAdapter.OnItemClickListener listener;
+    private AcceptdAdapter.OnItemClickListener listener;
 
     // Interface for item click events
     public interface OnItemClickListener {
         void onItemClick(TechProject project);
     }
 
-    public void setOnItemClickListener(trendingGigsAdapter.OnItemClickListener onItemClickListener) {
+    public void setOnItemClickListener(AcceptdAdapter.OnItemClickListener onItemClickListener) {
         this.listener = onItemClickListener;
     }
 
@@ -46,14 +46,14 @@ public class trendingGigsAdapter<Bitmap> extends RecyclerView.Adapter<trendingGi
         }
     }
 
-    public trendingGigsAdapter(List<TechProject> trendingGigsList) {
+    public AcceptdAdapter(List<TechProject> trendingGigsList) {
         this.trendingGigsList = trendingGigsList;
     }
 
     @Override
-    public trendingGigsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AcceptdAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.viewholder_trending, parent, false);
+                .inflate(R.layout.viewholder_list, parent, false);
         return new ViewHolder(view);
     }
 

@@ -8,23 +8,18 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
-import com.example.techfreelancers.adapter.SearchResultAdapter;
+import com.example.techfreelancers.adapter.AcceptdAdapter;
 import com.example.techfreelancers.api.ProjectApi;
 import com.example.techfreelancers.api.ResponseModel;
 import com.example.techfreelancers.api.model.TechProject;
 import com.example.techfreelancers.databinding.ActivityAcceptedBinding;
-import com.example.techfreelancers.databinding.ActivityPostedBinding;
 import com.example.techfreelancers.utils.RetrofitClient;
 import com.example.techfreelancers.utils.SessionManager;
 
@@ -43,7 +38,7 @@ public class AcceptedActivity extends AppCompatActivity {
 
     ActivityAcceptedBinding acceptedBinding;
     private RecyclerView recyclerView;
-    private SearchResultAdapter adapter;
+    private AcceptdAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +90,8 @@ public class AcceptedActivity extends AppCompatActivity {
                     ResponseModel responseModel = response.body();
                     if (responseModel.getSuccess() && responseModel.getStatus() == 200) {
                         List<TechProject> projects = (List<TechProject>) responseModel.getData();
-                        adapter = new SearchResultAdapter(projects);
-                        adapter.setOnItemClickListener(new SearchResultAdapter.OnItemClickListener() {
+                        adapter = new AcceptdAdapter(projects);
+                        adapter.setOnItemClickListener(new AcceptdAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(TechProject project) {
                                 Intent intent = new Intent(getApplicationContext(), gigDetailsActivity.class);
