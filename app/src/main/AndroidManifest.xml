@@ -14,6 +14,9 @@
         android:theme="@style/Theme.TechFreelancers"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.RateAccepterActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.AcceptedActivity"
             android:exported="false" />
         <activity

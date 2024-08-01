@@ -94,7 +94,7 @@ public class PostedActivity extends AppCompatActivity {
                         adapter.setOnItemClickListener(new PostedAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(TechProject project) {
-                                Intent intent = new Intent(getApplicationContext(), gigDetailsActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), RateAccepterActivity.class);
                                 intent.putExtra("projectId", project.getProjectId());
                                 startActivity(intent);
                             }

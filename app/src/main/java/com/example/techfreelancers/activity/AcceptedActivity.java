@@ -94,7 +94,7 @@ public class AcceptedActivity extends AppCompatActivity {
                         adapter.setOnItemClickListener(new AcceptdAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(TechProject project) {
-                                Intent intent = new Intent(getApplicationContext(), gigDetailsActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), RatePublisherActivity.class);
                                 intent.putExtra("projectId", project.getProjectId());
                                 startActivity(intent);
                             }
