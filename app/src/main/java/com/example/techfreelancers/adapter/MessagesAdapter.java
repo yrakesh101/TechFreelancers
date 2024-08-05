@@ -17,7 +17,7 @@ import java.util.List;
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MessageViewHolder> {
 
     private List<Message> messagesList;
-    private OnItemClickListener listener;
+    private MessagesAdapter.OnItemClickListener listener;
 
     // Interface for item click events
     public interface OnItemClickListener {
@@ -29,7 +29,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
     }
 
     // Method to set click listener from outside the adapter
-    public void setOnItemClickListener(OnItemClickListener listener) {
+    public void setOnItemClickListener(MessagesAdapter.OnItemClickListener listener) {
         this.listener = listener;
     }
 
@@ -49,12 +49,9 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
         holder.profilePic.setImageResource(message.getProfilePic());
 
         // Set click listener
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    listener.onItemClick(message);
-                }
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(message);
             }
         });
     }

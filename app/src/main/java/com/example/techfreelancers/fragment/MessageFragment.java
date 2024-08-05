@@ -1,5 +1,6 @@
 package com.example.techfreelancers.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techfreelancers.R;
+import com.example.techfreelancers.activity.conversations;
 import com.example.techfreelancers.adapter.MessagesAdapter;
 import com.example.techfreelancers.databinding.FragmentMessageBinding;
 import com.example.techfreelancers.models.Message;
@@ -47,13 +49,13 @@ public class MessageFragment extends Fragment {
         // Add more sample data as needed...
 
         adapter = new MessagesAdapter(messageList);
-        recyclerView.setAdapter(adapter);
-
-        // Set item click listener
         adapter.setOnItemClickListener(new MessagesAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Message message) {
+                Intent intent = new Intent(getContext(), conversations.class);
+                startActivity(intent);
             }
         });
+        recyclerView.setAdapter(adapter);
     }
 }

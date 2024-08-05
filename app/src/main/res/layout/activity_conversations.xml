@@ -1,20 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.conversations"
     android:background="@color/main_background"
-    android:padding="8dp">
+    tools:context=".activity.searchResultActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/purple_700">
+            <TextView
+                android:id="@+id/action_bar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accepted Projects"
+                android:textSize="28sp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <!-- Chat messages container -->
     <ScrollView
         android:id="@+id/chatScrollView"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_above="@id/messageInputLayout"
-        android:layout_alignParentTop="true">
+        android:padding="10dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/chatContainer"
@@ -28,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_message_reciever"
                 android:padding="12dp"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_marginBottom="8dp"
                 android:layout_gravity="start">
 
@@ -154,11 +182,12 @@
     <LinearLayout
         android:id="@+id/messageInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:background="?attr/colorPrimary">
+        android:layout_height="0dp"
+        android:paddingLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chatScrollView">
 
         <!-- Text input for typing message -->
         <EditText
@@ -166,21 +195,22 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type a message"
-            android:padding="12dp"
             android:background="@android:drawable/edit_text"
+            android:hint="Type a message"
             android:inputType="textMultiLine"
+            android:maxLines="5"
             android:minLines="1"
-            android:maxLines="5"/>
+            android:padding="12dp" />
 
         <!-- Send button -->
         <ImageButton
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_send"
             android:background="?attr/selectableItemBackground"
             android:contentDescription="Send"
-            android:padding="12dp"/>
+            android:padding="12dp"
+            android:src="@android:drawable/ic_menu_send" />
     </LinearLayout>
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

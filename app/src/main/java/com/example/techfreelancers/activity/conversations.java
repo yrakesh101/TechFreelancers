@@ -1,26 +1,50 @@
 package com.example.techfreelancers.activity;
 
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.ColorInt;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.techfreelancers.R;
+import com.example.techfreelancers.databinding.ActivityConversationsBinding;
 
 public class conversations extends AppCompatActivity {
+
+    ActivityConversationsBinding conversationsBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_conversations);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        conversationsBinding = ActivityConversationsBinding.inflate(getLayoutInflater());
+        setContentView(conversationsBinding.getRoot());
+
+        setSupportActionBar(conversationsBinding.toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
+            Drawable navIcon = conversationsBinding.toolbar.getNavigationIcon();
+            if (navIcon != null) {
+                @ColorInt int color = getResources().getColor(R.color.white);
+                navIcon.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
+            }
+        }
+        init();
+    }
+
+    private void init() {
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // Handle the back button press
+        return true;
     }
 }
