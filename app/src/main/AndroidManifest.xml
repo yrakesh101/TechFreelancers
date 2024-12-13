@@ -1,16 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TechFreelancers"
-        tools:targetApi="31" />
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.conversations"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CheckfinishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SubmitfinishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RateAccepterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RatePublisherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AcceptedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PostedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LoadingActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.gigDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.postGigActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.mostVotedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.editProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.searchResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.loginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.signupActivity"
+            android:exported="false" />
+    </application>
 
 </manifest>

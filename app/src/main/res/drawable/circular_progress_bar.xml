@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/circular_progress_bar.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="ring">
+            <size android:width="5dp"/>
+            <solid android:color="#80FFFFFF"/>
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <shape android:shape="ring">
+            <size android:width="5dp"/>
+            <solid android:color="#80FFFFFF"/>
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="ring">
+                <size android:width="5dp"/>
+                <solid android:color="#FFFFFF"/>
+            </shape>
+        </clip>
+    </item>
+</layer-list>
